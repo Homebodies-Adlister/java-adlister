@@ -7,20 +7,24 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private int zip;
+    private boolean isAdmin = false;
 
     public User() {}
 
-    public User(String username, String email, String password) {
+    public User(String username, String email, String password,int zip) {
         this.username = username;
         this.email = email;
-        setPassword(password);
+        this.password = password;
+        this.zip = zip;
     }
 
-    public User(long id, String username, String email, String password) {
+    public User(long id, String username, String email, String password,int zip) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.zip = zip;
     }
 
     public long getId() {
@@ -53,5 +57,17 @@ public class User {
 
     public void setPassword(String password) {
         this.password = Password.hash(password);
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 }

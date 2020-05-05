@@ -43,3 +43,4 @@ CREATE TABLE user_places (
     restaurant_id INT UNSIGNED NOT NULL,
     retail_id INT UNSIGNED NOT NULL
 );
+

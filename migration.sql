@@ -16,17 +16,21 @@ CREATE TABLE users (
 
 CREATE TABLE retail (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
     title VARCHAR(240) NOT NULL,
     description TEXT NOT NULL,
     rating INT DEFAULT 3,
     curb_side BOOLEAN NOT NULL,
     in_store BOOLEAN NOT NULL,
+    mask BOOLEAN NOT NULL,
+    gloves BOOLEAN NOT NULL,
     social_distancing BOOLEAN NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE restaurant (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
     title VARCHAR(240) NOT NULL,
     description TEXT NOT NULL,
     rating INT DEFAULT 3,
@@ -37,10 +41,3 @@ CREATE TABLE restaurant (
     take_out BOOLEAN NOT NULL,
     PRIMARY KEY (id)
 );
-
-CREATE TABLE user_places (
-    user_id INT UNSIGNED NOT NULL,
-    restaurant_id INT UNSIGNED NOT NULL,
-    retail_id INT UNSIGNED NOT NULL
-);
-

@@ -8,10 +8,11 @@ CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    password VARCHAR(20) NOT NULL,
-    zip VARCHAR(5) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    zip INT NOT NULL,
     is_admin BOOLEAN NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    UNIQUE (username, email)
 );
 
 CREATE TABLE retail (

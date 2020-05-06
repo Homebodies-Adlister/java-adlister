@@ -18,7 +18,7 @@ public class MySQLAdsDao implements Ads {
             connection = DriverManager.getConnection(
                 config.getUrl(),
 
-                config.getUserName(),
+                config.getUsername(),
 
                 config.getPassword()
             );

@@ -12,7 +12,12 @@ import java.io.IOException;
 @WebServlet(name = "StoresIndexServlet", urlPatterns = "/whatsopen")
 public class StoresIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("restaurant", DaoFactory.getAdsDao().all());
-        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+        if (request.getSession().getAttribute("user") == null) {
+            request.setAttribute("restaurants", DaoFactory.getRestaurantDao().all());
+            request.setAttribute("retail", DaoFactory.getRetailDao().allRetail());
+            request.getRequestDispatcher("/WEB-INF/stores/index.jsp").forward(request, response);
+            return;
+        }
+        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
     }
 }

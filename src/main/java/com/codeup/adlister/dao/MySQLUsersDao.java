@@ -54,7 +54,7 @@ public class MySQLUsersDao implements Users {
         long newlyCreatedUserId = 0;
         try {
             //inserts sql command into prepared statement
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(username, email, password, zip) VALUES (?, ?, ?, ?);");
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(username, email, password, zip) VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
             //sets the username, email, pass and zip for new user
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());

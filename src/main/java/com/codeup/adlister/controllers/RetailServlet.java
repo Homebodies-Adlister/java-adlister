@@ -28,11 +28,12 @@ public class RetailServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         Retail retail = new Retail(
                 user.getId(),
-                request.setAttribute("id", id)
+                request.setAttribute()
         );
         DaoFactory.getRetailDao().insertRetail(retail);
         response.sendRedirect("/login");
     }
+
 
 }
 
@@ -60,3 +61,13 @@ public class RetailServlet extends HttpServlet {
 //                request.getParameter("social_distance"),
 //                request.getParameter("in_store"),
 //                request.getParameter("can_delete")
+
+
+//    User user = (User) request.getSession().getAttribute("user");
+//    Retail retail = new Retail(
+//            user.getId(),
+//            request.setAttribute("id", id)
+//    );
+//        DaoFactory.getRetailDao().insertRetail(retail);
+//        response.sendRedirect("/login");
+//}

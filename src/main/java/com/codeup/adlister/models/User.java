@@ -8,25 +8,31 @@ public class User {
     private String email;
     private String password;
     private int zip;
-    private boolean isAdmin = false;
+    private boolean isAdmin;
 
+    // General Constructor to instantiate User without creating a User
     public User() {}
 
+    // Constructor for the user
     public User(String username, String email, String password,int zip) {
         this.username = username;
         this.email = email;
         this.password = password;
         this.zip = zip;
+        isAdmin = false;
     }
 
+    // Constructor for the backend where we have the id from the database
     public User(long id, String username, String email, String password,int zip) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.zip = zip;
+        isAdmin = false;
     }
 
+    // Getters and Setters for all properties
     public long getId() {
         return id;
     }
@@ -69,5 +75,9 @@ public class User {
 
     public boolean isAdmin() {
         return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

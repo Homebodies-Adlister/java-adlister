@@ -2,6 +2,7 @@ package com.codeup.adlister.models;
 
 public class Restaurant {
     private long id;
+    private long user_id;
     private String title;
     private String description;
     private int rating;
@@ -13,8 +14,9 @@ public class Restaurant {
 
     public Restaurant(){};
 
-    public Restaurant(long id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeOut) {
+    public Restaurant(long id, long user_id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeIn) {
         this.id = id;
+        this.user_id = user_id;
         this.title = title;
         this.description = description;
         this.rating = rating;
@@ -25,7 +27,8 @@ public class Restaurant {
         this.takeOut = takeOut;
     }
 
-    public Restaurant(String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeOut) {
+    public Restaurant(long user_id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeIn) {
+        this.user_id = user_id;
         this.title = title;
         this.description = description;
         this.rating = rating;
@@ -40,8 +43,12 @@ public class Restaurant {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
     }
 
     public String getTitle() {
@@ -68,19 +75,19 @@ public class Restaurant {
         this.rating = rating;
     }
 
-    public boolean hasMask() {
+    public boolean isMask() {
         return mask;
     }
 
-    public void setHasMask(boolean mask) {
+    public void setMask(boolean mask) {
         this.mask = mask;
     }
 
-    public boolean hasGloves() {
+    public boolean isGloves() {
         return gloves;
     }
 
-    public void setHasGloves(boolean gloves) {
+    public void setGloves(boolean gloves) {
         this.gloves = gloves;
     }
 

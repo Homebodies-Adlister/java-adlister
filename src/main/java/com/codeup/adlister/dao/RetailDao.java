@@ -112,7 +112,7 @@ public class RetailDao implements Retailers {
     @Override
     public Retail updateRetail(Retail retail) {
         Retail ret = new Retail();
-        String insertQuery = "UPDATE retail SET title = ?, description = ?, rating = ?, gloves = ?, mask = ?, curb_side = ?, social_distancing = ?, in_store = ?, can_delete = ? WHERE id = ?";
+        String insertQuery = "UPDATE retail SET title = ?, description = ?, rating = ?, gloves = ?, mask = ?, curb_side = ?, social_distancing = ?, in_store = ? WHERE id = ?";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
@@ -124,7 +124,7 @@ public class RetailDao implements Retailers {
             stmt.setBoolean(6, retail.isCurbSide());
             stmt.setBoolean(7, retail.isSocialDistance());
             stmt.setBoolean(8, retail.isInStore());
-            stmt.setBoolean(9, retail.isCanDelete());
+//            stmt.setBoolean(9, retail.isCanDelete());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error Updating Retail Store.", e);

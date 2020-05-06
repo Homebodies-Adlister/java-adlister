@@ -25,7 +25,8 @@ CREATE TABLE retail (
     mask BOOLEAN NOT NULL,
     gloves BOOLEAN NOT NULL,
     social_distancing BOOLEAN NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 CREATE TABLE restaurant (
@@ -39,5 +40,6 @@ CREATE TABLE restaurant (
     social_distancing BOOLEAN NOT NULL,
     dine_in BOOLEAN NOT NULL,
     take_out BOOLEAN NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
 );

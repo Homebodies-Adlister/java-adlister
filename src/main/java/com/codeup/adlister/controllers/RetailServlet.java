@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.RetailServlet", urlPatterns = "/retail")
+@WebServlet(name = "controllers.RetailServlet", urlPatterns = "/update")
 public class RetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        request.getRequestDispatcher("src/main/webapp/WEB-INF/stores/updateStore.jsp").forward(request, response);
@@ -25,11 +25,12 @@ public class RetailServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        Retail retail = new Retail(
-                user.getId(),
-                request.setAttribute()
-        );
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+//        int rating = request.getParameter();
+
+
+        Retail retail = new Retail();
         DaoFactory.getRetailDao().insertRetail(retail);
         response.sendRedirect("/login");
     }

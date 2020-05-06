@@ -64,6 +64,7 @@ public class MySQLUsersDao implements Users {
             stmt.executeUpdate();
             //*****************************************
             ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
             if(rs.next()){
                 //saves mysql row id to variable
                 newlyCreatedUserId = rs.getLong(1);

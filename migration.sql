@@ -8,7 +8,7 @@ CREATE TABLE users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     zip VARCHAR(5) NOT NULL,
     is_admin BOOLEAN NULL,
     PRIMARY KEY (id)
@@ -25,7 +25,8 @@ CREATE TABLE retail (
     mask BOOLEAN NOT NULL,
     gloves BOOLEAN NOT NULL,
     social_distancing BOOLEAN NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
 CREATE TABLE restaurant (
@@ -39,5 +40,6 @@ CREATE TABLE restaurant (
     social_distancing BOOLEAN NOT NULL,
     dine_in BOOLEAN NOT NULL,
     take_out BOOLEAN NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
 );

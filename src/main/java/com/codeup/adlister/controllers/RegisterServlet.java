@@ -38,6 +38,7 @@ public class RegisterServlet extends HttpServlet {
 //            return validZip;
 //        }
 
+
         // validate input
         boolean inputHasErrors = username.isEmpty()
             || email.isEmpty()

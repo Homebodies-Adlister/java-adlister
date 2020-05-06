@@ -5,6 +5,7 @@ import com.codeup.adlister.controllers.Config;
 public class DaoFactory {
     private static Ads adsDao;
     private static Users usersDao;
+    private static Retailers retailDao;
     private static Config config = new Config();
 
     public static Ads getAdsDao() {
@@ -19,6 +20,13 @@ public class DaoFactory {
             usersDao = new MySQLUsersDao(config);
         }
         return usersDao;
+    }
+
+    public static Retailers getRetailDao(){
+        if (retailDao == null) {
+            retailDao = new RetailDao(config);
+        }
+        return retailDao;
     }
 
 }

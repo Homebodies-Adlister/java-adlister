@@ -3,7 +3,6 @@ package com.codeup.adlister.models;
 public class Retail {
     private long userId;
     private long id;
-    private long retailId;
     public String retailTitle;
     public String retailDescription;
     public int rating;
@@ -12,12 +11,12 @@ public class Retail {
     public boolean curbSide;
     public boolean socialDistance;
     public boolean inStore;
+    public boolean canDelete;
 
     public Retail(){}
 
-    public Retail(long userId, long retailId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves){
+    public Retail(long userId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves, boolean canDelete){
         this.userId = userId;
-        this.retailId = retailId;
         this.retailDescription = retailDescription;
         this.retailTitle = retailTitle;
         this.rating = rating;
@@ -26,12 +25,12 @@ public class Retail {
         this.inStore = inStore;
         this.masks = masks;
         this.gloves = gloves;
+        this.canDelete = canDelete;
     }
 
-    public Retail(long id, long userId, long retailId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves){
+    public Retail(long id, long userId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves, boolean canDelete){
         this.id = id;
         this.userId = userId;
-        this.retailId = retailId;
         this.retailDescription = retailDescription;
         this.retailTitle = retailTitle;
         this.rating = rating;
@@ -40,6 +39,7 @@ public class Retail {
         this.inStore = inStore;
         this.masks = masks;
         this.gloves = gloves;
+        this.canDelete = canDelete;
     }
 
     public long getId() {
@@ -56,14 +56,6 @@ public class Retail {
 
     public void setUserId(long userId) {
         this.userId = userId;
-    }
-
-    public long getRetailId() {
-        return retailId;
-    }
-
-    public void setRetailId(long retailId) {
-        this.retailId = retailId;
     }
 
     public String getRetailTitle() {
@@ -130,4 +122,11 @@ public class Retail {
         this.masks = masks;
     }
 
+    public boolean isCanDelete() {
+        return canDelete;
+    }
+
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
+    }
 }

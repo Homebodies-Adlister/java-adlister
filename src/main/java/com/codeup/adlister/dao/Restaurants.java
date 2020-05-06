@@ -1,6 +1,5 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Restaurant;
 
 import java.util.List;
@@ -14,6 +13,6 @@ public interface Restaurants {
 
     Restaurant updateRestaurant (Restaurant restaurant);
 
-    Long findRestaurantById(long restaurantId);
+    Restaurant findRestaurantById(long restaurantId);
 
 }

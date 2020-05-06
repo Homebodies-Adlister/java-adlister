@@ -1,7 +1,6 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.controllers.Config;
-import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Restaurant;
 import com.mysql.cj.jdbc.Driver;
 
@@ -27,6 +26,8 @@ public class RestaurantDao implements Restaurants{
         }
     }
 
+    //Putting restaurants into list to show them all
+    //createRestaurantFromResults method written on line 150
     @Override
     public List<Restaurant> all(){
         PreparedStatement stmt = null;
@@ -39,6 +40,8 @@ public class RestaurantDao implements Restaurants{
         }
     }
 
+
+    //method for adding new restaurant to database
     @Override
     public Long addRestaurant(Restaurant restaurant){
         long newlyCreatedRestaurant = 0;
@@ -56,6 +59,7 @@ public class RestaurantDao implements Restaurants{
         return newlyCreatedRestaurant;
     }
 
+    //method for deleting a restaurant from database using id
     @Override
     public void deleteRestaurantById(long id){
         String deleteQuery = "DELETE FROM restaurant WHERE id = ?";
@@ -73,10 +77,62 @@ public class RestaurantDao implements Restaurants{
         }
     }
 
-    Restaurant updateRestaurant (Restaurant restaurant){
 
+    //method for editing a rest using the id to find the restaurant
+    @Override
+    public Restaurant updateRestaurant (Restaurant restaurant){
+        String updateQuery = "UPDATE restaurant SET" +
+                "title = ?," +
+                "description = ?" +
+                "rating = ?" +
+                "mask = ?" +
+                "gloves = ?" +
+                "social_distancing = ?" +
+                "dine_in = ?" +
+                "take_out = ?" +
+                "WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(updateQuery);
+            stmt.setString(1, restaurant.getTitle());
+            stmt.setString(2,restaurant.getDescription());
+            stmt.setInt(3, restaurant.getRating());
+            stmt.setBoolean(4, restaurant.hasMask());
+            stmt.setBoolean(5, restaurant.hasGloves());
+            stmt.setBoolean(6, restaurant.isSocialDistancing());
+            stmt.setBoolean(7, restaurant.isDineIn());
+            stmt.setBoolean(8, restaurant.isTakeOut());
+            stmt.setLong(9, restaurant.getId());
+        } catch (SQLException e){
+            throw new RuntimeException("Error editing restaurant");
+        }
+        return restaurant;
     }
 
+    //method for finding a restaurant in the data base using the id as a reference
+    @Override
+    public Restaurant findRestaurantById(long id){
+        Restaurant returnRestaurant = new Restaurant();
+        String query = String.format("SELECT * FROM restaurant WHERE id = %d", id);
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()){
+                returnRestaurant.setId(id);
+                returnRestaurant.setTitle(rs.getString("title"));
+                returnRestaurant.setDescription(rs.getString("description"));
+                returnRestaurant.setRating(rs.getInt("rating"));
+                returnRestaurant.setHasMask(rs.getBoolean("mask"));
+                returnRestaurant.setHasGloves(rs.getBoolean("gloves"));
+                returnRestaurant.setDineIn(rs.getBoolean("dine_in"));
+                returnRestaurant.setTakeOut(rs.getBoolean("take_out"));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return returnRestaurant;
+    }
+
+    //method used in createRestaurantFromResults
     private Restaurant extractRestaurant(ResultSet rs) throws SQLException {
         return new Restaurant(
                 rs.getLong("id"),
@@ -91,6 +147,7 @@ public class RestaurantDao implements Restaurants{
         );
     }
 
+    //using the extractRestaurant to make a new restaurant
     private List<Restaurant> createRestaurantFromResults(ResultSet rs) throws SQLException {
         List<Restaurant> restaurants = new ArrayList<>();
         while (rs.next()) {

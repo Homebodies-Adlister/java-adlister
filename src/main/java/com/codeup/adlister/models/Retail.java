@@ -11,7 +11,6 @@ public class Retail {
     public boolean curbSide;
     public boolean socialDistance;
     public boolean inStore;
-    public boolean canDelete;
 
     public Retail(){}
 
@@ -25,7 +24,6 @@ public class Retail {
         this.inStore = inStore;
         this.masks = masks;
         this.gloves = gloves;
-        this.canDelete = canDelete;
     }
 
     public Retail(long id, long userId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves, boolean canDelete){
@@ -39,7 +37,6 @@ public class Retail {
         this.inStore = inStore;
         this.masks = masks;
         this.gloves = gloves;
-        this.canDelete = canDelete;
     }
 
     public long getId() {
@@ -122,11 +119,4 @@ public class Retail {
         this.masks = masks;
     }
 
-    public boolean isCanDelete() {
-        return canDelete;
-    }
-
-    public void setCanDelete(boolean canDelete) {
-        this.canDelete = canDelete;
-    }
 }

@@ -45,13 +45,13 @@ public class RestaurantDao implements Restaurants{
     @Override
     public Long addRestaurant(Restaurant restaurant){
         long newlyCreatedRestaurant = 0;
-        String addRestaurantQuery = String.format("INSERT INTO restaurant (id, title, description, rating, mask, gloves, social_distancing, dine_in, take_out) VALUES ('%d, '%s', '%s', '%d', '%b', '%b', '%b', '%b', '%b')",
-                restaurant.getId(),
+        String addRestaurantQuery = String.format("INSERT INTO restaurant (user_id, title, description, rating, mask, gloves, social_distancing, dine_in, take_out) VALUES ('%d, '%s', '%s', '%d', '%b', '%b', '%b', '%b', '%b')",
+                restaurant.getUser_id(),
                 restaurant.getTitle(),
                 restaurant.getDescription(),
                 restaurant.getRating(),
-                restaurant.hasMask(),
-                restaurant.hasGloves(),
+                restaurant.isMask(),
+                restaurant.isGloves(),
                 restaurant.isSocialDistancing(),
                 restaurant.isDineIn(),
                 restaurant.isTakeOut()
@@ -83,21 +83,21 @@ public class RestaurantDao implements Restaurants{
     public Restaurant updateRestaurant (Restaurant restaurant){
         String updateQuery = "UPDATE restaurant SET " +
                 "title = ?," +
-                "description = ?" +
-                "rating = ?" +
-                "mask = ?" +
-                "gloves = ?" +
-                "social_distancing = ?" +
-                "dine_in = ?" +
-                "take_out = ?" +
+                "description = ?," +
+                "rating = ?," +
+                "mask = ?," +
+                "gloves = ?," +
+                "social_distancing = ?," +
+                "dine_in = ?," +
+                "take_out = ? " +
                 "WHERE id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(updateQuery);
             stmt.setString(1, restaurant.getTitle());
             stmt.setString(2,restaurant.getDescription());
             stmt.setInt(3, restaurant.getRating());
-            stmt.setBoolean(4, restaurant.hasMask());
-            stmt.setBoolean(5, restaurant.hasGloves());
+            stmt.setBoolean(4, restaurant.isMask());
+            stmt.setBoolean(5, restaurant.isGloves());
             stmt.setBoolean(6, restaurant.isSocialDistancing());
             stmt.setBoolean(7, restaurant.isDineIn());
             stmt.setBoolean(8, restaurant.isTakeOut());
@@ -117,12 +117,12 @@ public class RestaurantDao implements Restaurants{
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()){
-                returnRestaurant.setId(id);
+                returnRestaurant.setUser_id(Long.parseLong("user_id"));
                 returnRestaurant.setTitle(rs.getString("title"));
                 returnRestaurant.setDescription(rs.getString("description"));
                 returnRestaurant.setRating(rs.getInt("rating"));
-                returnRestaurant.setHasMask(rs.getBoolean("mask"));
-                returnRestaurant.setHasGloves(rs.getBoolean("gloves"));
+                returnRestaurant.setMask(rs.getBoolean("mask"));
+                returnRestaurant.setGloves(rs.getBoolean("gloves"));
                 returnRestaurant.setDineIn(rs.getBoolean("dine_in"));
                 returnRestaurant.setTakeOut(rs.getBoolean("take_out"));
             }
@@ -136,6 +136,7 @@ public class RestaurantDao implements Restaurants{
     private Restaurant extractRestaurant(ResultSet rs) throws SQLException {
         return new Restaurant(
                 rs.getLong("id"),
+                rs.getLong("user_id"),
                 rs.getString("title"),
                 rs.getString("description"),
                 rs.getInt("rating"),

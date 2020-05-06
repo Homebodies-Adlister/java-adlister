@@ -10,7 +10,7 @@ public class Restaurant {
     private boolean gloves;
     private boolean socialDistancing;
     private boolean dineIn;
-    private boolean takeIn;
+    private boolean takeOut;
 
     public Restaurant(){};
 
@@ -24,7 +24,7 @@ public class Restaurant {
         this.gloves = gloves;
         this.socialDistancing = socialDistancing;
         this.dineIn = dineIn;
-        this.takeIn = takeIn;
+        this.takeOut = takeOut;
     }
 
     public Restaurant(long user_id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeIn) {
@@ -36,7 +36,7 @@ public class Restaurant {
         this.gloves = gloves;
         this.socialDistancing = socialDistancing;
         this.dineIn = dineIn;
-        this.takeIn = takeIn;
+        this.takeOut = takeOut;
     }
 
     public long getId() {
@@ -107,11 +107,11 @@ public class Restaurant {
         this.dineIn = dineIn;
     }
 
-    public boolean isTakeIn() {
-        return takeIn;
+    public boolean isTakeOut() {
+        return takeOut;
     }
 
-    public void setTakeIn(boolean takeIn) {
-        this.takeIn = takeIn;
+    public void setTakeOut(boolean takeOut) {
+        this.takeOut = takeOut;
     }
 }

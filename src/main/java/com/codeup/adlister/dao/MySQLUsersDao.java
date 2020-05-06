@@ -100,7 +100,7 @@ public class MySQLUsersDao implements Users {
     public User updateUser(User user) {
         User updated = new User();
         //sql statement to update the user for given id
-        String updateQuery = "UPDATE user SET" +
+        String updateQuery = "UPDATE users SET " +
                 "username = ?," +
                 "email = ?," +
                 "password = ?," +

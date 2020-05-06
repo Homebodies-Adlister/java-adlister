@@ -13,6 +13,7 @@ public class RetailDao implements Retailers {
 
     private Connection connection = null;
 
+    //This is the constructor for a new Retail object
     public RetailDao(Config config) {
         try {
             DriverManager.registerDriver(new Driver());
@@ -26,6 +27,7 @@ public class RetailDao implements Retailers {
         }
     }
 
+    //??Extracts information the database retail??
     private Retail extractRetail(ResultSet rs) throws SQLException {
         return new Retail(
                 rs.getLong("id"),
@@ -41,6 +43,7 @@ public class RetailDao implements Retailers {
         );
     }
 
+    //this will generate a new list of restaurants
     private List<Retail> createRetailFromResults(ResultSet rs) throws SQLException {
         List<Retail> retail = new ArrayList<>();
         while (rs.next()) {
@@ -50,11 +53,12 @@ public class RetailDao implements Retailers {
     }
 
 
+    //This is what will list all the retail store on the jsp page.
     @Override
     public List<Retail> allRetail() {
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads");
+            stmt = connection.prepareStatement("SELECT * FROM retail");
             ResultSet rs = stmt.executeQuery();
             return createRetailFromResults(rs);
         } catch (SQLException e) {
@@ -62,17 +66,7 @@ public class RetailDao implements Retailers {
         }
     }
 
-    /* private long userId;
-    private long id;
-    public String retailTitle;
-    public String retailDescription;
-    public int rating;
-    public boolean gloves;
-    public boolean masks;
-    public boolean curbSide;
-    public boolean socialDistance;
-    public boolean inStore;*/
-
+    //this is what will add a Retail Store to the retail database table.
     @Override
     public Long insertRetail(Retail retail) {
         try {
@@ -96,30 +90,26 @@ public class RetailDao implements Retailers {
         }
     }
 
+    //this is deleting the this is deleting the retail store by it's id.
     @Override
     public void deleteRetail(Retail retail) {
         try {
-            String insertQuery = "DELETE FROM retail WHERE id=(?)";
+            String insertQuery = "DELETE FROM retail WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, retail.getRetailTitle());
+            stmt.setLong(1, retail.getId());
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.deleteRow();
+
+            boolean success = stmt.execute(insertQuery);
+            if(success){
+                System.out.println("Retail Store added");
+            } else {
+                System.out.println("Did not add retail store");
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException("Error Deleting Retail Store.", e);
         }
     }
-
-//    @Override
-//    public String addRetailDescription(Retail retail) {
-//        return null;
-//    }
-//
-//
-//    @Override
-//    public String retailTitle(Retail retail) {
-//        return null;
-//    }
 
 }
 

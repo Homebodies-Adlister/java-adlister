@@ -58,8 +58,8 @@ public class MySQLUsersDao implements Users {
             //sets the username, email, pass and zip for new user
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
-            stmt.setString(4, user.getPassword());
-            stmt.setInt(3, user.getZip());
+            stmt.setString(3, user.getPassword());
+            stmt.setInt(4, user.getZip());
             //returns int representing number of rows affected by sql statement
             stmt.executeUpdate();
             //*****************************************
@@ -111,7 +111,7 @@ public class MySQLUsersDao implements Users {
             PreparedStatement stmt = connection.prepareStatement(updateQuery);
             //inserts passed parameters into designated pieces of user object
             stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getUsername());
+            stmt.setString(2, user.getEmail());
             stmt.setString(3,user.getPassword());
             stmt.setInt(4,user.getZip());
             stmt.setLong(5, user.getId());

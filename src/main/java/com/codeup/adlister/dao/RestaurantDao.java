@@ -17,7 +17,7 @@ public class RestaurantDao implements Restaurants{
             connection = DriverManager.getConnection(
                     config.getUrl(),
 
-                    config.getUserName(),
+                    config.getUsername(),
 
                     config.getPassword()
             );
@@ -81,7 +81,7 @@ public class RestaurantDao implements Restaurants{
     //method for editing a rest using the id to find the restaurant
     @Override
     public Restaurant updateRestaurant (Restaurant restaurant){
-        String updateQuery = "UPDATE restaurant SET" +
+        String updateQuery = "UPDATE restaurant SET " +
                 "title = ?," +
                 "description = ?" +
                 "rating = ?" +

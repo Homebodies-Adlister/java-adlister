@@ -11,6 +11,9 @@ public interface Retailers {
     Long insertRetail(Retail retail);
     //Delete a retail store
     void deleteRetail(Retail retail);
+    //Uodate retail
+    Retail updateRetail(Retail retail);
+
 
 //    //add a description to
 //    String addRetailDescription(Retail retail);

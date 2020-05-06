@@ -10,7 +10,7 @@ public interface Restaurants {
 
     Long addRestaurant(Restaurant restaurant);
 
-    Long deleteRestaurant(Restaurant restaurant);
+    void deleteRestaurantById(long id);
 
     Restaurant updateRestaurant (Restaurant restaurant);
 

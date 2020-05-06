@@ -25,18 +25,8 @@ public class RegisterServlet extends HttpServlet {
         String hash = BCrypt.hashpw(password, BCrypt.gensalt());
         String passwordConfirmation = request.getParameter("confirm_password");
         String zip = (request.getParameter("zip"));
-//
-//        public int validateZip(String zip){
-//            int validZip;
-//            try {
-//                if (zip.length() == 5){
-//                    validZip = Integer.parseInt(zip);
-//                }
-//            } catch (NumberFormatException nfe){
-//                throw new RuntimeException("Incorrect format");
-//            }
-//            return validZip;
-//        }
+        int zipcode = validateZip(zip);
+
 
 
         // validate input
@@ -52,8 +42,20 @@ public class RegisterServlet extends HttpServlet {
         }
 
         // create and save a new user
-        User user = new User(username, email, hash);
-        DaoFactory.getUsersDao().insert(user);
+        User user = new User(username, email, hash, zipcode);
+        DaoFactory.getUsersDao().addUser(user);
         response.sendRedirect("/login");
+    }
+//checking to see if the zip code the user enters is equal to 5 numbers
+    public static int validateZip(String zip){
+        int validZip = 0;
+        try {
+            if (zip.length() == 5){
+                validZip = Integer.parseInt(zip);
+            }
+        } catch (NumberFormatException nfe){
+            throw new RuntimeException("Incorrect format");
+        }
+        return validZip;
     }
 }

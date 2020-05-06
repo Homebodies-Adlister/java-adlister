@@ -14,7 +14,6 @@ CREATE TABLE users (
     PRIMARY KEY (id),
     UNIQUE (username, email)
 );
-
 CREATE TABLE retail (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id INT UNSIGNED NOT NULL,

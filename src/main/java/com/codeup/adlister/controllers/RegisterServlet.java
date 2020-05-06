@@ -25,7 +25,7 @@ public class RegisterServlet extends HttpServlet {
         String hash = BCrypt.hashpw(password, BCrypt.gensalt());
         String passwordConfirmation = request.getParameter("confirm_password");
         String zip = (request.getParameter("zip"));
-        int zip = validateZip(zip);
+        int zipcode = validateZip(zip);
 
 
 
@@ -42,7 +42,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
         // create and save a new user
-        User user = new User(username, email, hash, zip);
+        User user = new User(username, email, hash, zipcode);
         DaoFactory.getUsersDao().addUser(user);
         response.sendRedirect("/login");
     }

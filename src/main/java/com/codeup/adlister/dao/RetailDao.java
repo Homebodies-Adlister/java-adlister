@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 import com.codeup.adlister.controllers.Config;
+import com.codeup.adlister.models.Restaurant;
 import com.codeup.adlister.models.Retail;
 import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
@@ -130,5 +131,28 @@ public class RetailDao implements Retailers {
         }
         return ret;
     }
+
+    @Override
+    public Retail findRetailById(long retailId) {
+            Retail findRetail =  new Retail();
+            String query = String.format("SELECT * FROM retail WHERE id = %d", retailId);
+            try{
+                Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                if (rs.next()){
+                    findRetail.setId(Long.parseLong("user_id"));
+                    findRetail.setRetailTitle(rs.getString("title"));
+                    findRetail.setRetailDescription(rs.getString("description"));
+                    findRetail.setRating(rs.getInt("rating"));
+                    findRetail.setMasks(rs.getBoolean("mask"));
+                    findRetail.setGloves(rs.getBoolean("gloves"));
+                    findRetail.setInStore(rs.getBoolean("in_store"));
+                    findRetail.setCurbSide(rs.getBoolean("curb_side"));
+                }
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+            return findRetail;
+        }
 }
 

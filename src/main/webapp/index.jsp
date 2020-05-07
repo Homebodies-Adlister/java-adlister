@@ -21,5 +21,9 @@
         </p>
         <p>Developed By Ted Zamarron, Johnny Delgado, Jackie Muralles, and James Spicer</p>
     </div>
+
+    <div>
+        <form></form>
+    </div>
 </body>
 </html>

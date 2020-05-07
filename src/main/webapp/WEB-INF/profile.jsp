@@ -14,6 +14,7 @@
     </div>
     <br>
     <div>
+
         <h3 class="d-flex justify-content-center">Please choose from the following options:</h3>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Restaurant</a>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Retail Store</a>

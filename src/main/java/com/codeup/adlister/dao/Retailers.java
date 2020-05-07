@@ -14,6 +14,8 @@ public interface Retailers {
     //Uodate retail
     Retail updateRetail(Retail retail);
 
+    Retail findRetailById(long retailId);
+
 
 //    //add a description to
 //    String addRetailDescription(Retail retail);

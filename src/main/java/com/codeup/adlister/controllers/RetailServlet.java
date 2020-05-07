@@ -1,10 +1,7 @@
 package com.codeup.adlister.controllers;
-
 import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Retail;
-import com.codeup.adlister.models.User;
-import org.mindrot.jbcrypt.BCrypt;
+import com.codeup.adlister.util.Password;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,44 +23,109 @@ public class RetailServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String title = request.getParameter("titles");
-        String description = request.getParameter("description");
+        //gets the retail id
+        String rId = request.getParameter("retailId");
+        Long id = Long.parseLong(rId);
 
-        String masks = (request.getParameter("masks"));
-        boolean useMask = Boolean.parseBoolean(masks);
+        //gets the title of the retail
+        String retailTitle = request.getParameter("titles");
+        //gets the description of the retail
+        String retailDescription = request.getParameter("description");
 
-        String gloves = (request.getParameter("gloves"));
-        boolean useGloves = Boolean.parseBoolean(gloves);
+        //gets weather or not the retail uses masks
+        String useMask = (request.getParameter("masks"));
+        boolean masks = usesMasks(useMask);
 
-        String socialDistancing = (request.getParameter("sd"));
-        boolean practiceSD = Boolean.parseBoolean(socialDistancing);
+        //gets weather or not the retail uses gloves
+        String useGloves = (request.getParameter("gloves"));
+        boolean gloves = usesGloves(useGloves);
 
-        String curbSide = (request.getParameter("cs"));
-        boolean hasCurbside = Boolean.parseBoolean(curbSide);
+        //gets weather or not the retail practices social distancing
+        String practiceSD = (request.getParameter("sd"));
+        boolean socialDistance = implementsSD(practiceSD);
 
-        String inStore = (request.getParameter("is"));
-        boolean isInStore = Boolean.parseBoolean(inStore);
+        //gets weather or not the retail has a curbside option
+        String hasCurbside = (request.getParameter("cs"));
+        boolean curbSide = curbSide(hasCurbside);
 
-        Retail ret = new Retail(title, description, useMask, useGloves, practiceSD, hasCurbside, isInStore);
+        //gets weather or not the retail allows shoppers in store
+        String isInStore = (request.getParameter("is"));
+        boolean inStore = inStoreShopping(isInStore);
+
+        //gets the rating of the user for the retail
+        String userRate = (request.getParameter("rating"));
+        int rating = userRating(userRate);
+
+        //creates a new retail object
+        Retail ret = new Retail(retailTitle, retailDescription, masks, gloves, socialDistance, curbSide, inStore, rating);
         DaoFactory.getRetailDao().updateRetail(ret);
+        response.sendRedirect("/profile");
+
+        //Should find the retail by id to edit it
+        DaoFactory.getRetailDao().findRetailById(id);
+        if (id == null) {
+            response.sendRedirect("/profile");
+            return;
+        }
 
     }
 
-    public boolean usesMasks(boolean masks){
-//        boolean usesMask = false;
-//        if (usesMask == true) {
-//            usesMask;
-//        }
-//        return masks;
-        return false;
+    //determines if the user pressed true or false the masks submission
+    public static boolean usesMasks(String masks){
+        boolean useMask = false;
+           if (useMask == true) {
+               useMask = Boolean.parseBoolean(masks);
+           }
+        return useMask;
     }
 
-    public boolean usesGloves(boolean gloves){
+    //determines if the user pressed true or false on the gloves submission
+    public static boolean usesGloves(String gloves){
         boolean useGloves = false;
         if (useGloves == true) {
-            return useGloves;
+            useGloves = Boolean.parseBoolean(gloves);
         }
-        return gloves;
+        return useGloves;
+    }
+
+    //determines if the user pressed true or false on the social distance submission
+    public static boolean implementsSD(String socialDistance){
+        boolean socialD = false;
+        if (socialD == true) {
+            socialD = Boolean.parseBoolean(socialDistance);
+        }
+        return socialD;
+    }
+
+    //determines if the user pressed true or false on the curbside options submission
+    public static boolean curbSide(String curbSide){
+        boolean curbS = false;
+        if (curbS == true) {
+            curbS = Boolean.parseBoolean(curbSide);
+        }
+        return curbS;
+    }
+
+    //determines if the user pressed true or false on the in store shopping submission
+    public static boolean inStoreShopping(String inStore){
+        boolean inS = false;
+        if (inS == true) {
+            inS = Boolean.parseBoolean(inStore);
+        }
+        return inS;
+    }
+
+    //gets the users overall rating of the store
+    public static int userRating(String rating){
+        int rat = 0;
+        try {
+            if (rating.length() == 5){
+                rat = Integer.parseInt(rating);
+            }
+        } catch (NumberFormatException nfe){
+            throw new RuntimeException("Incorrect format");
+        }
+        return rat;
     }
 
 

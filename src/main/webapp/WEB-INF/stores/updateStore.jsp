@@ -71,6 +71,10 @@
                 <label for="is_form_2">False</label>
                 <input id="is_form_2" type="radio" name="is" value="false">
             </div>
+            <div>
+                <label for="rating">Overall rating</label>
+                <input type="text" id="rating" name="rating">
+            </div>
             <input type="submit" class="btn btn-primary btn-block" value="Submit Changes">
         </form>
     </body>

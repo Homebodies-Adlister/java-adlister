@@ -32,6 +32,7 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block">
         </form>
+        <jsp:include page="/WEB-INF/partials/footer.jsp" />
     </div>
 </body>
 </html>

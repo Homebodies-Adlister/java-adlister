@@ -8,16 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "StoresIndexServlet", urlPatterns = "/whatsopen")
 public class StoresIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
+        if (request.getSession().getAttribute("user") != null) {
             request.setAttribute("restaurants", DaoFactory.getRestaurantDao().all());
-            request.setAttribute("retail", DaoFactory.getRetailDao().allRetail());
+            request.setAttribute("retailers", DaoFactory.getRetailDao().allRetail());
             request.getRequestDispatcher("/WEB-INF/stores/index.jsp").forward(request, response);
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 }

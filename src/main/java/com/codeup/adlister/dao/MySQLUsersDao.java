@@ -54,12 +54,12 @@ public class MySQLUsersDao implements Users {
         long newlyCreatedUserId = 0;
         try {
             //inserts sql command into prepared statement
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(username, email, password, zipcode) VALUES (?, ?, ?, ?);");
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(username, email, password, zip) VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
             //sets the username, email, pass and zip for new user
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
-            stmt.setString(4, user.getPassword());
-            stmt.setInt(3, user.getZip());
+            stmt.setString(3, user.getPassword());
+            stmt.setInt(4, user.getZip());
             //returns int representing number of rows affected by sql statement
             stmt.executeUpdate();
             //*****************************************
@@ -100,18 +100,18 @@ public class MySQLUsersDao implements Users {
     public User updateUser(User user) {
         User updated = new User();
         //sql statement to update the user for given id
-        String updateQuery = "UPDATE user SET" +
+        String updateQuery = "UPDATE users SET " +
                 "username = ?," +
                 "email = ?," +
                 "password = ?," +
-                "zip = ?," +
+                "zip = ?" +
                 "WHERE ID = ?;";
         try {
             //sql statement passed into prepared statement for protection/security
             PreparedStatement stmt = connection.prepareStatement(updateQuery);
             //inserts passed parameters into designated pieces of user object
             stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getUsername());
+            stmt.setString(2, user.getEmail());
             stmt.setString(3,user.getPassword());
             stmt.setInt(4,user.getZip());
             stmt.setLong(5, user.getId());

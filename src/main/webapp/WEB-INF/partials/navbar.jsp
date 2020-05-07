@@ -12,7 +12,7 @@
                 </c:when>
                 <c:otherwise>
                     <li><a href="/profile"><i class="fas fa-user"></i></a></li>
-                    <li><a href="#"><i class="fas fa-users-cog"></i></a></li>
+                    <li><a href="/profile/edit"><i class="fas fa-users-cog"></i></a></li>
                     <li><a href="/logout">Logout</a></li>
                 </c:otherwise>
             </c:choose>

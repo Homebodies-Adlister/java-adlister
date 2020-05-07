@@ -14,10 +14,10 @@ public class Retail {
 
     public Retail(){}
 
-    public Retail(long userId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves, boolean canDelete){
+    public Retail(long userId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves){
         this.userId = userId;
-        this.retailDescription = retailDescription;
         this.retailTitle = retailTitle;
+        this.retailDescription = retailDescription;
         this.rating = rating;
         this.curbSide = curbSide;
         this.socialDistance = socialDistance;
@@ -26,11 +26,11 @@ public class Retail {
         this.gloves = gloves;
     }
 
-    public Retail(long id, long userId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves, boolean canDelete){
+    public Retail(long id, long userId, String retailDescription, String retailTitle, int rating, boolean curbSide, boolean socialDistance, boolean inStore, boolean masks, boolean gloves){
         this.id = id;
         this.userId = userId;
-        this.retailDescription = retailDescription;
         this.retailTitle = retailTitle;
+        this.retailDescription = retailDescription;
         this.rating = rating;
         this.curbSide = curbSide;
         this.socialDistance = socialDistance;

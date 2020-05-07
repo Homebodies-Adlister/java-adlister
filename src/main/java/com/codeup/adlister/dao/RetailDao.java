@@ -35,8 +35,7 @@ public class RetailDao implements Retailers {
                 rs.getBoolean("mask"),
                 rs.getBoolean("curb_side"),
                 rs.getBoolean("social_distancing"),
-                rs.getBoolean("in_store"),
-                rs.getBoolean("can_delete")
+                rs.getBoolean("in_store")
         );
     }
 

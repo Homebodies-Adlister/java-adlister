@@ -38,38 +38,38 @@
                 <c:choose>
                     <c:when test="${}"></c:when>
                 <label for="masks_form_1">True</label>
-                <input id="masks_form_1" type="radio" name="true_masks" value="true">
+                <input id="masks_form_1" type="radio" name="masks" value="true">
                 <label for="masks_form_2">False</label>
-                <input id="masks_form_2" type="radio" name="false_masks" value="false">
+                <input id="masks_form_2" type="radio" name="masks" value="false">
                 </c:choose>
             </div>
             <div>
                 <label>The store uses masks</label>
                 <label for="gloves_form_1">True</label>
-                <input id="gloves_form_1" type="radio" name="true_gloves" value="true">
+                <input id="gloves_form_1" type="radio" name="gloves" value="true">
                 <label for="masks_form_2">False</label>
-                <input id="gloves_form_2" type="radio" name="false_gloves" value="false">
+                <input id="gloves_form_2" type="radio" name="gloves" value="false">
             </div>
             <div>
                 <label>The store practices social distancing</label>
                 <label for="sd_form_1">True</label>
-                <input id="sd_form_1" type="radio" name="true_sd" value="true">
+                <input id="sd_form_1" type="radio" name="sd" value="true">
                 <label for="sd_form_2">False</label>
-                <input id="sd_form_2" type="radio" name="false_sd" value="false">
+                <input id="sd_form_2" type="radio" name="sd" value="false">
             </div>
             <div>
                 <label>The store has curb side options</label>
                 <label for="cs_form_1">True</label>
-                <input id="cs_form_1" type="radio" name="true_cs" value="true">
+                <input id="cs_form_1" type="radio" name="cs" value="true">
                 <label for="cs_form_2">False</label>
-                <input id="cs_form_2" type="radio" name="false_cs" value="false">
+                <input id="cs_form_2" type="radio" name="cs" value="false">
             </div>
             <div>
                 <label>in store shopping is allowed</label>
                 <label for="is_form_1">True</label>
-                <input id="is_form_1" type="radio" name="true_is" value="true">
+                <input id="is_form_1" type="radio" name="is" value="true">
                 <label for="is_form_2">False</label>
-                <input id="is_form_2" type="radio" name="false_is" value="false">
+                <input id="is_form_2" type="radio" name="is" value="false">
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Submit Changes">
         </form>

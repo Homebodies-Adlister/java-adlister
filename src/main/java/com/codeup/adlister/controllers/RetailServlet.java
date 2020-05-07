@@ -28,8 +28,48 @@ public class RetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String title = request.getParameter("titles");
         String description = request.getParameter("description");
+
         String masks = (request.getParameter("masks"));
-        boolean useMask = ();
+        boolean useMask = Boolean.parseBoolean(masks);
+
+        String gloves = (request.getParameter("gloves"));
+        boolean useGloves = Boolean.parseBoolean(gloves);
+
+        String socialDistancing = (request.getParameter("sd"));
+        boolean practiceSD = Boolean.parseBoolean(socialDistancing);
+
+        String curbSide = (request.getParameter("cs"));
+        boolean hasCurbside = Boolean.parseBoolean(curbSide);
+
+        String inStore = (request.getParameter("is"));
+        boolean isInStore = Boolean.parseBoolean(inStore);
+
+        Retail ret = new Retail(title, description, useMask, useGloves, practiceSD, hasCurbside, isInStore);
+        DaoFactory.getRetailDao().updateRetail(ret);
+
+    }
+
+    public boolean usesMasks(boolean masks){
+//        boolean usesMask = false;
+//        if (usesMask == true) {
+//            usesMask;
+//        }
+//        return masks;
+        return false;
+    }
+
+    public boolean usesGloves(boolean gloves){
+        boolean useGloves = false;
+        if (useGloves == true) {
+            return useGloves;
+        }
+        return gloves;
+    }
+
+
+}
+
+
 
 
 //        Retail retail = new Retail();
@@ -45,18 +85,6 @@ public class RetailServlet extends HttpServlet {
 
 //        DaoFactory.getRetailDao().insertRetail(retail);
 //        response.sendRedirect("/");
-    }
-
-    public boolean usesMasks(boolean masks){
-        boolean usesMask = false;
-        if (usesMask == true) {
-            return usesMask;
-        }
-        return masks;
-    }
-
-
-}
 
 
 //        Retail retail = new Retail(

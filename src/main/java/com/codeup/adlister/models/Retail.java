@@ -39,6 +39,9 @@ public class Retail {
         this.gloves = gloves;
     }
 
+    public Retail(String title, String description, boolean useMask, boolean useGloves, boolean practiceSD, boolean hasCurbside, boolean isInStore) {
+    }
+
     public long getId() {
         return id;
     }

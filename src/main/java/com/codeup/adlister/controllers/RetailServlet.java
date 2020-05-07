@@ -4,6 +4,7 @@ import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.Retail;
 import com.codeup.adlister.models.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,18 +26,65 @@ public class RetailServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String title = request.getParameter("title");
+        String title = request.getParameter("titles");
         String description = request.getParameter("description");
-//        int rating = request.getParameter();
 
+        String masks = (request.getParameter("masks"));
+        boolean useMask = Boolean.parseBoolean(masks);
 
-        Retail retail = new Retail();
-        DaoFactory.getRetailDao().insertRetail(retail);
-        response.sendRedirect("/login");
+        String gloves = (request.getParameter("gloves"));
+        boolean useGloves = Boolean.parseBoolean(gloves);
+
+        String socialDistancing = (request.getParameter("sd"));
+        boolean practiceSD = Boolean.parseBoolean(socialDistancing);
+
+        String curbSide = (request.getParameter("cs"));
+        boolean hasCurbside = Boolean.parseBoolean(curbSide);
+
+        String inStore = (request.getParameter("is"));
+        boolean isInStore = Boolean.parseBoolean(inStore);
+
+        Retail ret = new Retail(title, description, useMask, useGloves, practiceSD, hasCurbside, isInStore);
+        DaoFactory.getRetailDao().updateRetail(ret);
+
+    }
+
+    public boolean usesMasks(boolean masks){
+//        boolean usesMask = false;
+//        if (usesMask == true) {
+//            usesMask;
+//        }
+//        return masks;
+        return false;
+    }
+
+    public boolean usesGloves(boolean gloves){
+        boolean useGloves = false;
+        if (useGloves == true) {
+            return useGloves;
+        }
+        return gloves;
     }
 
 
 }
+
+
+
+
+//        Retail retail = new Retail();
+//        retail.setRetailTitle("title");
+//        retail.setRetailDescription("description");
+//        retail.setRating(1);
+//        retail.setGloves(false);
+//        retail.setMasks(false);
+
+//        request.getAttribute(retail.getRetailTitle());
+//        request.getAttribute(retail.getRetailDescription());
+//        request.getAttribute(retail.getRating());
+
+//        DaoFactory.getRetailDao().insertRetail(retail);
+//        response.sendRedirect("/");
 
 
 //        Retail retail = new Retail(

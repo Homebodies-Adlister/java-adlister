@@ -14,9 +14,9 @@
     </div>
     <div>
         <h2>Please choose from the following options:</h2>
-        <button type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Restaurant</button>
-        <button type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Retail Store</button>
-        <button type="button" class="btn btn-primary btn-lg btn-block" href="/whatsopen">View All Open Businesses</button>
+        <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Restaurant</a>
+        <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Retail Store</a>
+        <a type="button" class="btn btn-primary btn-lg btn-block" href="/whatsopen">View All Open Businesses</a>
     </div>
 
 

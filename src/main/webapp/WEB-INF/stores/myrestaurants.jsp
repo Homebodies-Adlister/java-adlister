@@ -15,7 +15,7 @@
 </head>
 <body>
 <%--loop through restaurant list to get contents of restaurant --%>
-    <c:forEach var="place" items="${restaurants}">
+    <c:forEach var="place" items="${Restaurants}">
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="card" style="width: 18rem;">
         <div class="card-body">

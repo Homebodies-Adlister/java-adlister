@@ -110,19 +110,20 @@ public class RestaurantDao implements Restaurants{
 
     //method for finding a restaurant in the data base using the id as a reference
     @Override
-    public Restaurant findRestaurantById(long id){
+    public Restaurant findRestaurantById(int id){
         Restaurant returnRestaurant = new Restaurant();
         String query = String.format("SELECT * FROM restaurant WHERE id = %d", id);
         try{
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()){
-                returnRestaurant.setUser_id(Long.parseLong("user_id"));
+                returnRestaurant.setUser_id(rs.getInt("user_id"));
                 returnRestaurant.setTitle(rs.getString("title"));
                 returnRestaurant.setDescription(rs.getString("description"));
                 returnRestaurant.setRating(rs.getInt("rating"));
                 returnRestaurant.setMask(rs.getBoolean("mask"));
                 returnRestaurant.setGloves(rs.getBoolean("gloves"));
+                returnRestaurant.setSocialDistancing(rs.getBoolean("social_distancing"));
                 returnRestaurant.setDineIn(rs.getBoolean("dine_in"));
                 returnRestaurant.setTakeOut(rs.getBoolean("take_out"));
             }

@@ -9,39 +9,35 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <jsp:include page="/update">
+    <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Please update retail" />
     </jsp:include>
 </head>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <body>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<%--    <c:if test="${param.true_masks == true}">--%>
 
-    <c:if test="${param.true_masks == true}">
-
-    </c:if>
-    <c:if test="${param.movieCheck == 'no'}">
-        Oops! Perhaps you can try watching them!
-    </c:if>
+<%--    </c:if>--%>
+<%--    <c:if test="${param.movieCheck == 'no'}">--%>
+<%--        Oops! Perhaps you can try watching them!--%>
+<%--    </c:if>--%>
 
 
-        <form action="/update" method="POST">
+        <form action="/update-retail" method="POST">
             <div class="form-group">
-                <label for="title">Retail Title</label>
+                <label for="title"><c:out value="${place.retailTitle}"/></label>
                 <input id="title" name="title" class="form-control" type="text">
             </div>
             <div class="form-group">
-                <label for="description">Enter Description</label>
+                <label for="description"><c:out value="${place.retailDescription}"/></label>
                 <input id="description" name="description" class="form-control" type="text">
             </div>
             <div>
                 <label>The store uses masks</label>
-                <c:choose>
-                    <c:when test="${}"></c:when>
                 <label for="masks_form_1">True</label>
                 <input id="masks_form_1" type="radio" name="masks" value="true">
                 <label for="masks_form_2">False</label>
                 <input id="masks_form_2" type="radio" name="masks" value="false">
-                </c:choose>
             </div>
             <div>
                 <label>The store uses masks</label>
@@ -76,6 +72,7 @@
                 <input type="text" id="rating" name="rating">
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Submit Changes">
+
         </form>
     </body>
 </html>

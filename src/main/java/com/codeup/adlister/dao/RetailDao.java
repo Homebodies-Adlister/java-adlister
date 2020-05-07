@@ -154,5 +154,21 @@ public class RetailDao implements Retailers {
             }
             return findRetail;
         }
+
+    // Method to find all retailers what belong to a given user
+    @Override
+    public List<Retail> findRetailByUsername(String username) {
+        List<Retail> userRetail = new ArrayList<>();
+        String query = "SELECT * FROM retail WHERE user_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            return createRetailFromResults (rs);
+        } catch (SQLException se){
+            throw new RuntimeException("Error getting all your retailers", se);
+        }
+
+
+    }
 }
 

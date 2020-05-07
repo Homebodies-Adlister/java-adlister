@@ -12,8 +12,10 @@
     <div class="container">
         <h1>Welcome, <c:out value="${sessionScope.user.username}" />!</h1>
     </div>
+    <br>
     <div>
-        <h2>Please choose from the following options:</h2>
+
+        <h3 class="d-flex justify-content-center">Please choose from the following options:</h3>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Restaurant</a>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Retail Store</a>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="/whatsopen">View All Open Businesses</a>

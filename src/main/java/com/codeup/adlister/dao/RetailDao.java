@@ -140,7 +140,7 @@ public class RetailDao implements Retailers {
                 Statement stmt = connection.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 if (rs.next()){
-                    findRetail.setId(Long.parseLong("user_id"));
+                    findRetail.setUserId(rs.getInt("user_id"));
                     findRetail.setRetailTitle(rs.getString("title"));
                     findRetail.setRetailDescription(rs.getString("description"));
                     findRetail.setRating(rs.getInt("rating"));

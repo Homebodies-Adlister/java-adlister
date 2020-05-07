@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "controllers.ViewRetailServlet", urlPatterns = "/mystores")
+@WebServlet("/mystores")
 public class ViewRetailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,19 +21,20 @@ public class ViewRetailServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idStr = request.getParameter("id");
-        Long id = Long.parseLong(idStr);
+        int id = Integer.parseInt(idStr);
 
         Retail retail = DaoFactory.getRetailDao().findRetailById(id);
 
         List<Retail> myStores = new ArrayList<>();
         myStores.add(retail);
-        request.setAttribute("Restaurants", myStores);
+        request.setAttribute("Stores", myStores);
+        request.getRequestDispatcher("/WEB-INF/stores/mystores.jsp").forward(request, response);
+    }
 
-        request.getRequestDispatcher("/WEB-INF/myStores.jsp").forward(request, response);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getRequestDispatcher("/WEB-INF/stores/mystores.jsp").forward(request, response);
     }
 }

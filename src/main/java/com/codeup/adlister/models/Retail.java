@@ -39,8 +39,18 @@ public class Retail {
         this.gloves = gloves;
     }
 
-    public Retail(String title, String description, boolean useMask, boolean useGloves, boolean practiceSD, boolean hasCurbside, boolean isInStore) {
+    public Retail(String retailTitle, String retailDescription, boolean masks, boolean gloves, boolean socialDistance, boolean curbSide, boolean inStore, int rating) {
+        this.retailTitle = retailTitle;
+        this.retailDescription = retailDescription;
+        this.masks = masks;
+        this.gloves = gloves;
+        this.socialDistance = socialDistance;
+        this.curbSide = curbSide;
+        this.inStore = inStore;
+        this.rating = rating;
+
     }
+
 
     public long getId() {
         return id;

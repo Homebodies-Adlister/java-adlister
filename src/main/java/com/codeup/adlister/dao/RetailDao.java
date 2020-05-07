@@ -28,6 +28,7 @@ public class RetailDao implements Retailers {
     private Retail extractRetail(ResultSet rs) throws SQLException {
         return new Retail(
                 rs.getLong("id"),
+                rs.getLong("user_id"),
                 rs.getString("title"),
                 rs.getString("description"),
                 rs.getInt("rating"),
@@ -35,8 +36,7 @@ public class RetailDao implements Retailers {
                 rs.getBoolean("mask"),
                 rs.getBoolean("curb_side"),
                 rs.getBoolean("social_distancing"),
-                rs.getBoolean("in_store"),
-                rs.getBoolean("can_delete")
+                rs.getBoolean("in_store")
         );
     }
 
@@ -67,7 +67,7 @@ public class RetailDao implements Retailers {
     @Override
     public Long insertRetail(Retail retail) {
         try {
-            String insertQuery = "INSERT INTO retail(id, title, description, rating, gloves, mask, curb_side, social_distancing, in_store) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO retail(user_id, title, description, rating, gloves, mask, curb_side, social_distancing, in_store) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, retail.getUserId());
             stmt.setString(2, retail.getRetailTitle());
@@ -124,7 +124,6 @@ public class RetailDao implements Retailers {
             stmt.setBoolean(6, retail.isCurbSide());
             stmt.setBoolean(7, retail.isSocialDistance());
             stmt.setBoolean(8, retail.isInStore());
-//            stmt.setBoolean(9, retail.isCanDelete());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error Updating Retail Store.", e);

@@ -142,9 +142,9 @@ public class RestaurantDao implements Restaurants{
                 rs.getInt("rating"),
                 rs.getBoolean("mask"),
                 rs.getBoolean("gloves"),
-                rs.getBoolean("socialDistancing"),
-                rs.getBoolean("dineIn"),
-                rs.getBoolean("takeOut")
+                rs.getBoolean("social_distancing"),
+                rs.getBoolean("dine_in"),
+                rs.getBoolean("take_out")
         );
     }
 

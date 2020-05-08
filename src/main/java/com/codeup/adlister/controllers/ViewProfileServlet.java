@@ -13,6 +13,8 @@ import java.io.IOException;
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
+            request.setAttribute("restaurant",DaoFactory.getRestaurantDao().all());
+            request.setAttribute("retail",DaoFactory.getRetailDao().allRetail());
             response.sendRedirect("/login");
             return;
         }

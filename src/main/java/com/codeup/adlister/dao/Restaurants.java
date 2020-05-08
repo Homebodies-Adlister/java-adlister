@@ -13,6 +13,6 @@ public interface Restaurants {
 
     Restaurant updateRestaurant (Restaurant restaurant);
 
-    Restaurant findRestaurantById(long restaurantId);
+    Restaurant findRestaurantById(int restaurantId);
 
 }

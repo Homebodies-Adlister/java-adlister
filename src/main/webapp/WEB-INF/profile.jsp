@@ -18,15 +18,15 @@
 
         <%--*****************************************ADD A RESTAURANT BUTTON AND MODAL**************************************************************--%>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRestaurant">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
             Add A Restaurant
         </button>
         <!-- Modal -->
-        <div class="modal fade" id="addRestaurant" tabindex="-1" role="dialog" aria-labelledby="addRestaurantLabel" aria-hidden="true">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addRestaurantLabel">Add A New Restaurant</h5>
+                        <h5 class="modal-title" id="myModalLabel">Add A New Restaurant</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -92,7 +92,7 @@
 
 <%--*****************************************ADD A RETAIL STORE BUTTON AND MODAL**************************************************************--%>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRetail">
+        <button type="button" class="btn btn-info" id="retail" data-toggle="modal" data-target="#addRetail">
             Add A Retail Store
         </button>
         <!-- Modal -->
@@ -160,7 +160,7 @@
                 </div>
             </div>
         </div>
-        <a type="button" class="btn btn-primary btn-lg btn-block" href="/whatsopen">View All Open Businesses</a>
+        <a type="button" class="btn btn-dark" href="/whatsopen">View All Open Businesses</a>
     </div>
 
     <div class="container-fluid">
@@ -211,6 +211,14 @@
             </div>
         </c:forEach>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#restaurant').click(function () {
+                $('#myModal').modal();
+            });
+        });
+    </script>
 
 </body>
 </html>

@@ -39,7 +39,7 @@
                 <input id="masks_form_2" type="radio" name="masks" value="<c:out value="${place.masks}"/>">
             </div>
             <div>
-                <label>The store uses masks</label>
+                <label>The store uses gloves</label>
                 <label for="gloves_form_1">True</label>
                 <input id="gloves_form_1" type="radio" name="gloves" value="<c:out value="${place.gloves}"/>">
                 <label for="gloves_form_2">False</label>

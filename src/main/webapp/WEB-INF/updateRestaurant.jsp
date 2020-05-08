@@ -40,7 +40,7 @@
         <input id="masks_form_2" type="radio" name="masks" value="false">
     </div>
     <div>
-        <label>The restaurant uses masks</label>
+        <label>The restaurant uses gloves</label>
         <label for="gloves_form_1">True</label>
         <input id="gloves_form_1" type="radio" name="gloves" value="true">
         <label for="masks_form_2">False</label>

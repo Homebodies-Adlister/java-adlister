@@ -66,7 +66,7 @@ public class RestaurantServlet extends HttpServlet {
             return;
         }
 
-        // update user info in database
+        // update restaurant info in database
         DaoFactory.getRestaurantDao().updateRestaurant(ret);
         request.getSession().setAttribute("restaurant", ret);
         response.sendRedirect("/profile");

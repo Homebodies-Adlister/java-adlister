@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -23,49 +24,54 @@
 <%--    </c:if>--%>
 
 
+<c:param name="description" value="${description}"/>
+
 <form action="/update-restaurant" method="POST">
     <div class="form-group">
-        <label for="title"><c:out value="${place.title}"/></label>
-        <input id="title" name="title" class="form-control" type="text">
+        <label for="title">Restaurant Title</label>
+        <input id="title" name="title" class="form-control" type="text" value="${restaurant.title}">
     </div>
     <div class="form-group">
-        <label for="description"><c:out value="${place.description}"/></label>
-        <input id="description" name="description" class="form-control" type="text">
+        <label for="description">Description</label>
+        <input id="description" name="description" class="form-control" type="text" value="${restaurant.description}">
     </div>
     <div>
         <label>The restaurant uses masks</label>
         <label for="masks_form_1">True</label>
-        <input id="masks_form_1" type="radio" name="masks" value="true">
+        <input id="masks_form_1" type="radio" name="masks" value="true" value="${restaurant.title}">
         <label for="masks_form_2">False</label>
-        <input id="masks_form_2" type="radio" name="masks" value="false">
+        <input id="masks_form_2" type="radio" name="masks" value="false" value="${restaurant.title}">
     </div>
     <div>
         <label>The restaurant uses masks</label>
         <label for="gloves_form_1">True</label>
-        <input id="gloves_form_1" type="radio" name="gloves" value="true">
+        <input id="gloves_form_1" type="radio" name="gloves" value="${restaurant.gloves}">
         <label for="masks_form_2">False</label>
-        <input id="gloves_form_2" type="radio" name="gloves" value="false">
+        <input id="gloves_form_2" type="radio" name="gloves" value="${restaurant.gloves}">
     </div>
+<%--    private boolean socialDistancing;--%>
+<%--    private boolean dineIn;--%>
+<%--    private boolean takeOut;--%>
     <div>
         <label>The restaurant practices social distancing</label>
         <label for="sd_form_1">True</label>
-        <input id="sd_form_1" type="radio" name="sd" value="true">
+        <input id="sd_form_1" type="radio" name="sd" value="${restaurant.socialDistancing}">
         <label for="sd_form_2">False</label>
-        <input id="sd_form_2" type="radio" name="sd" value="false">
+        <input id="sd_form_2" type="radio" name="sd" value="${restaurant.socialDistancing}">
     </div>
     <div>
         <label>The restaurant has delivery options</label>
         <label for="cs_form_1">True</label>
-        <input id="cs_form_1" type="radio" name="cs" value="true">
+        <input id="cs_form_1" type="radio" name="cs" value="${restaurant.takeOut}">
         <label for="cs_form_2">False</label>
-        <input id="cs_form_2" type="radio" name="cs" value="false">
+        <input id="cs_form_2" type="radio" name="cs" value="${restaurant.takeOut}">
     </div>
     <div>
         <label>Dine in is allowed at the restaurant</label>
         <label for="is_form_1">True</label>
-        <input id="is_form_1" type="radio" name="is" value="true">
+        <input id="is_form_1" type="radio" name="is" value="${restaurant.dineIn}">
         <label for="is_form_2">False</label>
-        <input id="is_form_2" type="radio" name="is" value="false">
+        <input id="is_form_2" type="radio" name="is" value="${restaurant.dineIn}">
     </div>
     <div>
         <label for="rating">Overall rating</label>

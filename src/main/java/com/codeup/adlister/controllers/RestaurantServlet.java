@@ -61,7 +61,7 @@ public class RestaurantServlet extends HttpServlet {
 
         //Should find the restaurant by id to edit it
         DaoFactory.getRestaurantDao().findRestaurantById(id);
-        if (id == null) {
+        if (id == 0) {
             response.sendRedirect("/profile");
             return;
         }

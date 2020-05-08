@@ -127,7 +127,6 @@ public class RetailServlet extends HttpServlet {
         return rat;
     }
 
-
 }
 
 

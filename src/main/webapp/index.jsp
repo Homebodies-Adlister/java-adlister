@@ -10,7 +10,7 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container" id="homepage">
-        <h1 class="text-center">Welcome Covid Connections!</h1>
+        <h1 class="text-center">Welcome To Covid Connections!</h1>
 
 
         <div class="text-center">

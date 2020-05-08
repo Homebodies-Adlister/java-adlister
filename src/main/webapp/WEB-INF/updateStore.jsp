@@ -21,92 +21,58 @@
 <%--    <c:if test="${param.movieCheck == 'no'}">--%>
 <%--        Oops! Perhaps you can try watching them!--%>
 <%--    </c:if>--%>
-
-
-<%--    //gets the retail id--%>
-<%--    String rId = request.getParameter("retailId");--%>
-<%--    Long id = Long.parseLong(rId);--%>
-
-<%--    //gets the title of the retail--%>
-<%--    String retailTitle = request.getParameter("titles");--%>
-<%--    //gets the description of the retail--%>
-<%--    String retailDescription = request.getParameter("description");--%>
-
-<%--    //gets weather or not the retail uses masks--%>
-<%--    String useMask = (request.getParameter("masks"));--%>
-<%--    boolean masks = usesMasks(useMask);--%>
-
-<%--    //gets weather or not the retail uses gloves--%>
-<%--    String useGloves = (request.getParameter("gloves"));--%>
-<%--    boolean gloves = usesGloves(useGloves);--%>
-
-<%--    //gets weather or not the retail practices social distancing--%>
-<%--    String practiceSD = (request.getParameter("sd"));--%>
-<%--    boolean socialDistance = implementsSD(practiceSD);--%>
-
-<%--    //gets weather or not the retail has a curbside option--%>
-<%--    String hasCurbside = (request.getParameter("cs"));--%>
-<%--    boolean curbSide = curbSide(hasCurbside);--%>
-
-<%--    //gets weather or not the retail allows shoppers in store--%>
-<%--    String isInStore = (request.getParameter("is"));--%>
-<%--    boolean inStore = inStoreShopping(isInStore);--%>
-
-<%--    //gets the rating of the user for the retail--%>
-<%--    String userRate = (request.getParameter("rating"));--%>
-<%--    int rating = userRating(userRate);--%>
-
+<c:forEach var="place" items="${Stores}">
         <form action="/update-retail" method="POST">
-<%--            <div class="form-group">--%>
-<%--                <label for="title">Retail Title</label>--%>
-<%--                <input id="title" name="title" class="form-control" type="text" value="${retail.retailTitle}">--%>
-<%--            </div>--%>
-<%--            <div class="form-group">--%>
-<%--                <label for="description">Retail Description</label>--%>
-<%--                <input id="description" name="description" class="form-control" type="text" value="${retail.retailDescription}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                <label>The store uses masks</label>--%>
-<%--                <label for="masks_form_1">True</label>--%>
-<%--                <input id="masks_form_1" type="radio" name="masks" value="${retail.masks}">--%>
-<%--                <label for="masks_form_2">False</label>--%>
-<%--                <input id="masks_form_2" type="radio" name="masks" value="${retail.masks}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                <label>The store uses masks</label>--%>
-<%--                <label for="gloves_form_1">True</label>--%>
-<%--                <input id="gloves_form_1" type="radio" name="gloves" value="${retail.gloves}">--%>
-<%--                <label for="masks_form_2">False</label>--%>
-<%--                <input id="gloves_form_2" type="radio" name="gloves" value="${retail.gloves}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                <label>The store practices social distancing</label>--%>
-<%--                <label for="sd_form_1">True</label>--%>
-<%--                <input id="sd_form_1" type="radio" name="sd" value="${retail.socialDistance}">--%>
-<%--                <label for="sd_form_2">False</label>--%>
-<%--                <input id="sd_form_2" type="radio" name="sd" value="${retail.socialDistance}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                <label>The store has curb side options</label>--%>
-<%--                <label for="cs_form_1">True</label>--%>
-<%--                <input id="cs_form_1" type="radio" name="cs" value="${retail.curbSide}">--%>
-<%--                <label for="cs_form_2">False</label>--%>
-<%--                <input id="cs_form_2" type="radio" name="cs" value="${retail.curbSide}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                <label>in store shopping is allowed</label>--%>
-<%--                <label for="is_form_1">True</label>--%>
-<%--                <input id="is_form_1" type="radio" name="is" value="${retail.inStore}">--%>
-<%--                <label for="is_form_2">False</label>--%>
-<%--                <input id="is_form_2" type="radio" name="is" value="${retail.inStore}">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                <label for="rating">Overall rating</label>--%>
-<%--                <input type="text" id="rating" name="rating" ${retail.rating}>--%>
-<%--            </div>--%>
-<%--            <input type="submit" class="btn btn-primary btn-block" value="Submit Changes">--%>
-
+            <div class="form-group">
+                <label for="title">Retail Title</label>
+                <input id="title" name="title" class="form-control" type="text" value="<c:out value="${place.retailTitle}" />">
+            </div>
+            <div class="form-group">
+                <label for="description">Retail Description</label>
+                <input id="description" name="description" class="form-control" type="text" value="<c:out value="${place.retailTitle}" />">
+            </div>
+            <div>
+                <label>The store uses masks</label>
+                <label for="masks_form_1">True</label>
+                <input id="masks_form_1" type="radio" name="masks" value="<c:out value="${place.masks}"/>">
+                <label for="masks_form_2">False</label>
+                <input id="masks_form_2" type="radio" name="masks" value="<c:out value="${place.masks}"/>">
+            </div>
+            <div>
+                <label>The store uses masks</label>
+                <label for="gloves_form_1">True</label>
+                <input id="gloves_form_1" type="radio" name="gloves" value="<c:out value="${place.gloves}"/>">
+                <label for="gloves_form_2">False</label>
+                <input id="gloves_form_2" type="radio" name="gloves" value="<c:out value="${place.gloves}"/>">
+            </div>
+            <div>
+                <label>The store practices social distancing</label>
+                <label for="sd_form_1">True</label>
+                <input id="sd_form_1" type="radio" name="sd" value="<c:out value="${place.socialDistance}"/>">
+                <label for="sd_form_2">False</label>
+                <input id="sd_form_2" type="radio" name="sd" value="<c:out value="${place.socialDistance}"/>">
+            </div>
+            <div>
+                <label>The store has curb side options</label>
+                <label for="cs_form_1">True</label>
+                <input id="cs_form_1" type="radio" name="cs" value="<c:out value="${place.curbSide}"/>">
+                <label for="cs_form_2">False</label>
+                <input id="cs_form_2" type="radio" name="cs" value="<c:out value="${place.curbSide}"/>">
+            </div>
+            <div>
+                <label>in store shopping is allowed</label>
+                <label for="is_form_1">True</label>
+                <input id="is_form_1" type="radio" name="is" value="<c:out value="${place.inStore}"/>">
+                <label for="is_form_2">False</label>
+                <input id="is_form_2" type="radio" name="is" value="<c:out value="${place.inStore}"/>">
+            </div>
+            <div>
+                <label for="rating">Overall rating</label>
+                <input type="text" id="rating" name="rating" value="<c:out value="${place.rating}"/>">
+            </div>
+            <input type="submit" class="btn btn-primary btn-block" value="Submit Changes">
         </form>
+</c:forEach>
     </body>
 </html>
 

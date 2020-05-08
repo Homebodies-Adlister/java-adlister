@@ -211,6 +211,7 @@
 <%--            </div>--%>
 <%--        </c:forEach>--%>
 
+
         <table class="table">
             <thead>
             <tr>

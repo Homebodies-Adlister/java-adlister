@@ -34,7 +34,11 @@
             <hr>
             <p class="card-text">Take-Out: <c:out value="${place.takeOut}"/></p>
         </div>
-        <a type="button" class="btn btn-primary btn-lg btn-block" href="/update-restaurant">Edit Restaurant</a>
+<%--        <a type="button" class="btn btn-primary btn-lg btn-block" href="/update-restaurant">Edit Restaurant</a>--%>
+        <form action="/update-restaurant" method="get">
+            <input type="hidden" name="id" value="${place.id}">
+            <button type="submit">Update</button>
+        </form>
     </c:forEach>
     </div>
 </body>

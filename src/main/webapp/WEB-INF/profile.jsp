@@ -210,6 +210,39 @@
                 </div>
             </div>
         </c:forEach>
+
+<%--        <table class="table">--%>
+<%--            <thead>--%>
+<%--            <tr>--%>
+<%--                <th>Name</th>--%>
+<%--                <th>Action</th>--%>
+<%--            </tr>--%>
+<%--            </thead>--%>
+<%--            <tbody>--%>
+<%--            <c:forEach items="${restaurant}" var="place">--%>
+<%--                <tr>--%>
+<%--                    <td>${place.title}</td>--%>
+<%--                    <td>--%>
+<%--                        <form action="/myrestaurants" method="post">--%>
+<%--                            <input type="hidden" name="id" value="${place.id}">--%>
+<%--                            <input class="btn" type="submit" value="View">--%>
+<%--                        </form>--%>
+<%--                    </td>--%>
+<%--                </tr>--%>
+<%--            </c:forEach>--%>
+<%--            <c:forEach items="${retail}" var="place">--%>
+<%--                <tr>--%>
+<%--                    <td>${place.retailTitle}</td>--%>
+<%--                    <td>--%>
+<%--                        <form action="/mystores" method="post">--%>
+<%--                            <input type="hidden" name="id" value="${place.id}">--%>
+<%--                            <input class="btn" type="submit" value="View">--%>
+<%--                        </form>--%>
+<%--                    </td>--%>
+<%--                </tr>--%>
+<%--            </c:forEach>--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
     </div>
 
 </body>

@@ -1,5 +1,8 @@
 
-.card {
-    background-color: lightgray;
-    border: black 5px solid;
+.container-fluid {
+    background-image: url("/Img/selective-focus-photography-of-open-signage-1036857.jpg");
+    height: auto;
+    width: 96vw;
+    position: center;
+    z-index: -1;
 }

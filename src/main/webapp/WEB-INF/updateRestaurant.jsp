@@ -24,8 +24,6 @@
 <%--    </c:if>--%>
 
 
-<c:param name="description" value="${description}"/>
-
 <form action="/update-restaurant" method="POST">
     <div class="form-group">
         <label for="title">Restaurant Title</label>

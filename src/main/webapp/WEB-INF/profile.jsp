@@ -100,7 +100,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addRetailLabel">Add A New Store</h5>
+                        <h5 class="modal-title" id="addRetailLabel">Add A New Restaurant</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -245,7 +245,7 @@
 <%--        </table>--%>
     </div>
 
-    <jsp:include page="/WEB-INF/partials/bootstrap-scripts.jsp" />
+    <jsp:include page="/WEB-INF/partials/bootstrap-scripts.jsp"/>
     <script>
         $(document).ready(function () {
             $('#restaurant').click(function () {

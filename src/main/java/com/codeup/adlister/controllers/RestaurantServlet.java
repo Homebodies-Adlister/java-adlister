@@ -27,7 +27,7 @@ public class RestaurantServlet extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         //gets the restaurant id
         String rId = request.getParameter("id");
-        int id = Integer.parseInt(rId);
+        long id = Long.parseLong(rId) + 1;
 
         //gets the title of the restaurant
         String restaurantTitle = request.getParameter("title");
@@ -39,7 +39,7 @@ public class RestaurantServlet extends HttpServlet {
         int rating = userRating(userRate);
 
         //gets weather or not the restaurant uses masks
-        String useMask = (request.getParameter("mask"));
+        String useMask = (request.getParameter("masks"));
         boolean masks = usesMasks(useMask);
 
         //gets weather or not the restaurant uses gloves
@@ -61,9 +61,8 @@ public class RestaurantServlet extends HttpServlet {
 
 
         //creates a new restaurant object
-        Restaurant ret = new Restaurant(id, user.getId(), restaurantTitle, restaurantDescription, rating, masks, gloves, socialDistance, dineIn, curbSide);
-        System.out.print(ret.getTitle());
-        DaoFactory.getRestaurantDao().updateRestaurant(ret);
+        Restaurant rest = new Restaurant(id, user.getId(), restaurantTitle, restaurantDescription, rating, masks, gloves, socialDistance, dineIn, curbSide);
+        DaoFactory.getRestaurantDao().updateRestaurant(rest);
         response.sendRedirect("/profile");
 
 //        //Should find the restaurant by id to edit it
@@ -129,9 +128,8 @@ public class RestaurantServlet extends HttpServlet {
     public static int userRating(String rating){
         int rat = 0;
         try {
-            if (rating.length() == 5){
-                rat = Integer.parseInt(rating);
-            }
+            rat = Integer.parseInt(rating);
+
         } catch (NumberFormatException nfe){
             throw new RuntimeException("Incorrect format");
         }

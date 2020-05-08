@@ -12,14 +12,31 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/myrestaurants")
+@WebServlet(urlPatterns = "/myrestaurants")
 public class ViewRestaurantServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("user") == null) {
+//        if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
-            return;
-        }
+//            return;
+//        }
+//        String idStr = request.getParameter("id");
+//        int id = Integer.parseInt(idStr);
+//
+//        Restaurant restaurant = DaoFactory.getRestaurantDao().findRestaurantById(id);
+//
+//        List<Restaurant> myRestaurants = new ArrayList<>();
+//        myRestaurants.add(restaurant);
+//        request.setAttribute("Restaurants", myRestaurants);
+//        request.getRequestDispatcher("/WEB-INF/stores/myrestaurants.jsp").forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//        request.getRequestDispatcher("/WEB-INF/stores/myrestaurants.jsp").forward(request, response);
+
+//        update
         String idStr = request.getParameter("id");
         int id = Integer.parseInt(idStr);
 
@@ -29,11 +46,5 @@ public class ViewRestaurantServlet extends HttpServlet {
         myRestaurants.add(restaurant);
         request.setAttribute("Restaurants", myRestaurants);
         request.getRequestDispatcher("/WEB-INF/stores/myrestaurants.jsp").forward(request,response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.getRequestDispatcher("/WEB-INF/stores/myrestaurants.jsp").forward(request, response);
     }
 }

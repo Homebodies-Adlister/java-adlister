@@ -126,6 +126,7 @@ public class RetailDao implements Retailers {
             stmt.setBoolean(6, retail.isCurbSide());
             stmt.setBoolean(7, retail.isSocialDistance());
             stmt.setBoolean(8, retail.isInStore());
+            stmt.setLong(9, retail.getId());
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException("Error Updating Retail Store.", e);

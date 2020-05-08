@@ -104,6 +104,7 @@ public class RestaurantDao implements Restaurants{
             stmt.setBoolean(7, restaurant.isDineIn());
             stmt.setBoolean(8, restaurant.isTakeOut());
             stmt.setLong(9, restaurant.getId());
+            stmt.executeUpdate();
         } catch (SQLException e){
             throw new RuntimeException("Error editing restaurant");
         }
@@ -162,7 +163,6 @@ public class RestaurantDao implements Restaurants{
 
     @Override
     public List<Restaurant> findRestaurantByUsername(User user) {
-        List<Restaurant> userRestaurant = new ArrayList<>();
         String query = "SELECT * FROM restaurant WHERE user_id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);

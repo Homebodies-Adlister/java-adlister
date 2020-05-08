@@ -23,3 +23,7 @@ VALUES (1, 1, 'Solo Serve', 'Great selection but not really', '3', true, true, t
 # USE adlister_project_db;
 # # INSERT INTO restaurant(id, user_id, title, description, rating, mask, gloves, social_distancing, dine_in, take_out)
 # # VALUES (5, 5, 'Red Lobster', 'They dont have much sanitation but i dont care cause im a cat', 4, true, true, false, false, true);
+
+# USE adlister_project_db;
+# INSERT INTO retail(id, user_id, title, description, rating, curb_side, in_store, mask, gloves, social_distancing)
+# VALUES (5, 5, 'Montgomery Wards', 'Very friendly staff', '5', true, true, true, false, true);

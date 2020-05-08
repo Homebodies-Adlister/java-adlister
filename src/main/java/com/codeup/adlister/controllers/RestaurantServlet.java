@@ -21,7 +21,7 @@ public class RestaurantServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //gets the restaurant id
         String rId = request.getParameter("id");
-        Long id = Long.parseLong(rId);
+        int id = Integer.parseInt(rId);
 
         //gets the title of the restaurant
         String restaurantTitle = request.getParameter("title");
@@ -61,7 +61,7 @@ public class RestaurantServlet extends HttpServlet {
 
         //Should find the restaurant by id to edit it
         DaoFactory.getRestaurantDao().findRestaurantById(id);
-        if (id == null) {
+        if (id == 0) {
             response.sendRedirect("/profile");
             return;
         }

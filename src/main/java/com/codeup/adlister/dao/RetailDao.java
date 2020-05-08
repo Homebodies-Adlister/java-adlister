@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.controllers.Config;
 import com.codeup.adlister.models.Restaurant;
 import com.codeup.adlister.models.Retail;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
 import java.util.ArrayList;
@@ -155,13 +156,15 @@ public class RetailDao implements Retailers {
             return findRetail;
         }
 
+
     // Method to find all retailers what belong to a given user
     @Override
-    public List<Retail> findRetailByUsername(String username) {
+    public List<Retail> findRetailByUsername(User user) {
         List<Retail> userRetail = new ArrayList<>();
         String query = "SELECT * FROM retail WHERE user_id = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, user.getId());
             ResultSet rs = stmt.executeQuery();
             return createRetailFromResults (rs);
         } catch (SQLException se){

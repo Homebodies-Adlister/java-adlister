@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Retail;
+import com.codeup.adlister.models.User;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public interface Retailers {
     Retail findRetailById(long retailId);
 
     //Find retail by user_id
-    List<Retail> findRetailByUsername (String username);
+    List<Retail> findRetailByUsername (User user);
 
 
 //    //add a description to

@@ -212,13 +212,13 @@
         </c:forEach>
     </div>
 
-    <script>
-        $(document).ready(function () {
-            $('#restaurant').click(function () {
-                $('#myModal').modal();
-            });
-        });
-    </script>
+<%--    <script>--%>
+<%--        $(document).ready(function () {--%>
+<%--            $('#restaurant').click(function () {--%>
+<%--                $('#myModal').modal();--%>
+<%--            });--%>
+<%--        });--%>
+<%--    </script>--%>
 
 </body>
 </html>

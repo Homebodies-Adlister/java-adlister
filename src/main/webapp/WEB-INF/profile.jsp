@@ -164,85 +164,86 @@
     </div>
 
     <div class="container-fluid">
-        <c:forEach var="place" items="${restaurant}">
-            <div class="card border-dark mb-3 mx-4" style="width: 18rem;">
-                <h5 class="card-header d-flex justify-content-center"><c:out value="${place.title}"/></h5>
-                <div class="card-body text-dark">
-                    <p class="card-title">Description: <c:out value="${place.description}"/></p>
-                    <hr>
-                    <p class="card-text">Rating: <c:out value="${place.rating}"/>/5</p>
-                    <hr>
-                    <p class="card-text">Mask: <c:out value="${place.mask}"/></p>
-                    <hr>
-                    <p class="card-text">Gloves: <c:out value="${place.gloves}"/></p>
-                    <hr>
-                    <p class="card-text">Social Distancing: <c:out value="${place.socialDistancing}"/></p>
-                    <hr>
-                    <p class="card-text">Dine-In: <c:out value="${place.dineIn}"/></p>
-                    <hr>
-                    <p class="card-text">Take-Out: <c:out value="${place.takeOut}"/></p>
+<%--        <c:forEach var="place" items="${restaurant}">--%>
+<%--            <div class="card border-dark mb-3 mx-4" style="width: 18rem;">--%>
+<%--                <h5 class="card-header d-flex justify-content-center"><c:out value="${place.title}"/></h5>--%>
+<%--                <div class="card-body text-dark">--%>
+<%--                    <p class="card-title">Description: <c:out value="${place.description}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Rating: <c:out value="${place.rating}"/>/5</p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Mask: <c:out value="${place.mask}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Gloves: <c:out value="${place.gloves}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Social Distancing: <c:out value="${place.socialDistancing}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Dine-In: <c:out value="${place.dineIn}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Take-Out: <c:out value="${place.takeOut}"/></p>--%>
 
-                    <form action="/update-restaurant" method="get">
-                        <input type="hidden" name="id" value="${place.id}">
-                        <button type="submit">Update</button>
-                    </form>
-                </div>
-            </div>
-        </c:forEach>
+<%--                    <form action="/update-restaurant" method="get">--%>
+<%--                        <input type="hidden" name="id" value="${place.id}">--%>
+<%--                        <button type="submit">Update</button>--%>
+<%--                    </form>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </c:forEach>--%>
 
-        <c:forEach var="place" items="${retail}">
-            <div class="card border-dark m-4" style="width: 18rem;">
-                <h5 class="card-header d-flex justify-content-center"><c:out value="${place.retailTitle}"/></h5>
-                <div class="card-body text-dark">
-                    <p class="card-title">Description: <c:out value="${place.retailDescription}"/></p>
-                    <hr>
-                    <p class="card-text">Rating: <c:out value="${place.rating}"/>/5</p>
-                    <hr>
-                    <p class="card-text">Mask: <c:out value="${place.masks}"/></p>
-                    <hr>
-                    <p class="card-text">Gloves: <c:out value="${place.gloves}"/></p>
-                    <hr>
-                    <p class="card-text">Social Distancing: <c:out value="${place.socialDistance}"/></p>
-                    <hr>
-                    <p class="card-text">Dine-In: <c:out value="${place.inStore}"/></p>
-                    <hr>
-                    <p class="card-text">Take-Out: <c:out value="${place.curbSide}"/></p>
-                </div>
-            </div>
-        </c:forEach>
+<%--        <c:forEach var="place" items="${retail}">--%>
+<%--            <div class="card border-dark m-4" style="width: 18rem;">--%>
+<%--                <h5 class="card-header d-flex justify-content-center"><c:out value="${place.retailTitle}"/></h5>--%>
+<%--                <div class="card-body text-dark">--%>
+<%--                    <p class="card-title">Description: <c:out value="${place.retailDescription}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Rating: <c:out value="${place.rating}"/>/5</p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Mask: <c:out value="${place.masks}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Gloves: <c:out value="${place.gloves}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Social Distancing: <c:out value="${place.socialDistance}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Dine-In: <c:out value="${place.inStore}"/></p>--%>
+<%--                    <hr>--%>
+<%--                    <p class="card-text">Take-Out: <c:out value="${place.curbSide}"/></p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </c:forEach>--%>
 
-<%--        <table class="table">--%>
-<%--            <thead>--%>
-<%--            <tr>--%>
-<%--                <th>Name</th>--%>
-<%--                <th>Action</th>--%>
-<%--            </tr>--%>
-<%--            </thead>--%>
-<%--            <tbody>--%>
-<%--            <c:forEach items="${restaurant}" var="place">--%>
-<%--                <tr>--%>
-<%--                    <td>${place.title}</td>--%>
-<%--                    <td>--%>
-<%--                        <form action="/myrestaurants" method="post">--%>
-<%--                            <input type="hidden" name="id" value="${place.id}">--%>
-<%--                            <input class="btn" type="submit" value="View">--%>
-<%--                        </form>--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--            <c:forEach items="${retail}" var="place">--%>
-<%--                <tr>--%>
-<%--                    <td>${place.retailTitle}</td>--%>
-<%--                    <td>--%>
-<%--                        <form action="/mystores" method="post">--%>
-<%--                            <input type="hidden" name="id" value="${place.id}">--%>
-<%--                            <input class="btn" type="submit" value="View">--%>
-<%--                        </form>--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-<%--            </c:forEach>--%>
-<%--            </tbody>--%>
-<%--        </table>--%>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${restaurant}" var="place">
+                <tr>
+                    <td>${place.title}</td>
+                    <td>
+                        <form action="/myrestaurants" method="post">
+                            <input type="hidden" name="id" value="${place.id}">
+                            <input class="btn" type="submit" value="View">
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            <c:forEach items="${retail}" var="place">
+                <tr>
+                    <td>${place.retailTitle}</td>
+                    <td>
+                        <form action="/mystores" method="post">
+                            <input type="hidden" name="id" value="${place.id}">
+                            <input class="btn" type="submit" value="View">
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 
     <jsp:include page="/WEB-INF/partials/bootstrap-scripts.jsp"/>

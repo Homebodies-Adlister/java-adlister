@@ -16,8 +16,151 @@
     <div>
 
         <h3 class="d-flex justify-content-center">Please choose from the following options:</h3>
-        <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Restaurant</a>
-        <a type="button" class="btn btn-primary btn-lg btn-block" href="/AddPlace">Add A Retail Store</a>
+
+        <%--*****************************************ADD A RESTAURANT BUTTON AND MODAL**************************************************************--%>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRestaurant">
+            Add A Restaurant
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="addRestaurant" tabindex="-1" role="dialog" aria-labelledby="addRestaurantLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addRestaurantLabel">Add A New Restaurant</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/addRestaurant" method="post">
+                            <div class="form-group">
+                                <label for="restaurant-title">Restaurant Title</label>
+                                <input type="text" name="restaurant-title" class="form-control" id="restaurant-title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="restaurant-rating">Please rate the sanitation of the restaurant:</label>
+                                <select class="form-control" id="restaurant-rating" name="restaurant-rating">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                            <hr>
+
+                            <h2>Which of the following does the restaurant enforce?</h2>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="gloves" type="checkbox" id="gloves" value="gloves">
+                                <label class="form-check-label"  for="gloves">Gloves</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="mask" type="checkbox" id="mask" value="mask">
+                                <label class="form-check-label"  for="mask">Masks</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="social-distance" type="checkbox" id="social-distance" value="social-distance">
+                                <label class="form-check-label"  for="social-distance">Social Distancing</label>
+                            </div>
+
+                            <hr>
+
+                            <h2>This restaurant is currently open for:</h2>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="dine-in" type="checkbox" id="dine-in" value="dine-in">
+                                <label class="form-check-label"  for="dine-in">Dine In</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="take-out" type="checkbox" id="take-out" value="take-out">
+                                <label class="form-check-label"  for="take-out">Take-out</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="restaurantDescription">Description</label>
+                                <textarea class="form-control" name="restaurantDescription" id="restaurantDescription" rows="3" placeholder="Please write a small description of your experience at this restaurant."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<%--*****************************************ADD A RETAIL STORE BUTTON AND MODAL**************************************************************--%>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRetail">
+            Add A Retail Store
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="addRetail" tabindex="-1" role="dialog" aria-labelledby="addRetailLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addRetailLabel">Add A New Restaurant</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/addRetail" method="post">
+
+                            <div class="form-group">
+                                <label for="shop-title">Shop Title</label>
+                                <input type="text" name="shop-title" class="form-control" id="shop-title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="retail-rating">Please rate the sanitation of the store:</label>
+                                <select class="form-control" id="retail-rating" name="retail-rating">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                            <h2>Which of the following does the store enforce?</h2>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="shop-gloves" type="checkbox" id="shop-gloves" value="shop-gloves">
+                                <label class="form-check-label" for="shop-gloves">Gloves</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="shop-gloves" type="checkbox" id="shop-mask" value="shop-mask">
+                                <label class="form-check-label" for="shop-mask">Masks</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="shop-distance" type="checkbox" id="shop-distance" value="shop-distance">
+                                <label class="form-check-label" for="shop-distance">Social Distancing</label>
+                            </div>
+
+                            <h2>This restaurant is currently open for:</h2>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="curb-side" type="checkbox" id="curb-side" value="curb-side">
+                                <label class="form-check-label" for="curb-side">Curb-Side Pickup</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="in-store" type="checkbox" id="in-store" value="in-store">
+                                <label class="form-check-label" for="in-store">In Store Shopping Available</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="retailDescription">Description</label>
+                                <textarea class="form-control" name="retailDescription" id="retailDescription" rows="3" placeholder="Please write a small description of your experience at this store."></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <a type="button" class="btn btn-primary btn-lg btn-block" href="/whatsopen">View All Open Businesses</a>
     </div>
 

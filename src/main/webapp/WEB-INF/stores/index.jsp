@@ -5,7 +5,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Everything that's open" />
     </jsp:include>
-<%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/index.css">--%>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/CSS/index.css"/>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />

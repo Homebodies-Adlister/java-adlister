@@ -1,6 +1,8 @@
 package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Retail;
+import com.codeup.adlister.models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,9 +21,10 @@ public class RetailServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = (User) request.getSession().getAttribute("user");
         //gets the retail id
         String rId = request.getParameter("retailId");
-        Long id = Long.parseLong(rId);
+        long id = Long.parseLong(rId) + 1;
 
         //gets the title of the retail
         String retailTitle = request.getParameter("titles");
@@ -53,16 +56,16 @@ public class RetailServlet extends HttpServlet {
         int rating = userRating(userRate);
 
         //creates a new retail object
-        Retail ret = new Retail(retailTitle, retailDescription, masks, gloves, socialDistance, curbSide, inStore, rating);
+        Retail ret = new Retail(id, user.getId(), retailTitle, retailDescription, rating, curbSide, socialDistance, inStore, masks, gloves);
         DaoFactory.getRetailDao().updateRetail(ret);
         response.sendRedirect("/profile");
 
         //Should find the retail by id to edit it
-        DaoFactory.getRetailDao().findRetailById(id);
-        if (id == null) {
-            response.sendRedirect("/profile");
-            return;
-        }
+//        Retail ret = DaoFactory.getRetailDao().findRetailById(id);
+//        if (id == null) {
+//            response.sendRedirect("/profile");
+//            return;
+//        }
 
     }
 
@@ -115,9 +118,8 @@ public class RetailServlet extends HttpServlet {
     public static int userRating(String rating){
         int rat = 0;
         try {
-            if (rating.length() == 5){
-                rat = Integer.parseInt(rating);
-            }
+            rat = Integer.parseInt(rating);
+
         } catch (NumberFormatException nfe){
             throw new RuntimeException("Incorrect format");
         }

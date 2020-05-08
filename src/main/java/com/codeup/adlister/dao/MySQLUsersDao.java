@@ -50,8 +50,8 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public Long addUser(User user) {
-        long newlyCreatedUserId = 0;
+    public int addUser(User user) {
+        int newlyCreatedUserId = 0;
         try {
             //inserts sql command into prepared statement
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO users(username, email, password, zip) VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
@@ -67,7 +67,7 @@ public class MySQLUsersDao implements Users {
             rs.next();
             if(rs.next()){
                 //saves mysql row id to variable
-                newlyCreatedUserId = rs.getLong(1);
+                newlyCreatedUserId = rs.getInt(1);
             }
             //checks if id was returned, or if new row is still at default of 0
             if(newlyCreatedUserId != 0){
@@ -132,7 +132,7 @@ public class MySQLUsersDao implements Users {
         }
         //if user exists grabs user object
         return new User(
-            rs.getLong("id"),
+            rs.getInt("id"),
             rs.getString("username"),
             rs.getString("email"),
             rs.getString("password"),

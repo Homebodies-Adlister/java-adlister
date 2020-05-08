@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Users {
     User findByUsername(String username);
-    Long addUser(User user);
+    int addUser(User user);
     void deleteUser(long id);
     User updateUser(User user);
 

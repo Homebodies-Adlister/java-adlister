@@ -17,14 +17,10 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <%--    <c:if test="${param.true_masks == true}">--%>
-
 <%--    </c:if>--%>
 <%--    <c:if test="${param.movieCheck == 'no'}">--%>
 <%--        Oops! Perhaps you can try watching them!--%>
 <%--    </c:if>--%>
-
-
-<c:param name="description" value="${description}"/>
 
 <form action="/update-restaurant" method="POST">
     <div class="form-group">
@@ -49,9 +45,6 @@
         <label for="masks_form_2">False</label>
         <input id="gloves_form_2" type="radio" name="gloves" value="${restaurant.gloves}">
     </div>
-<%--    private boolean socialDistancing;--%>
-<%--    private boolean dineIn;--%>
-<%--    private boolean takeOut;--%>
     <div>
         <label>The restaurant practices social distancing</label>
         <label for="sd_form_1">True</label>

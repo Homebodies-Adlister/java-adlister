@@ -1,6 +1,8 @@
 package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Restaurant;
+import com.codeup.adlister.models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +17,14 @@ public class RestaurantServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+        int id = Integer.parseInt(request.getParameter("id"));
+        Restaurant restaurant = DaoFactory.getRestaurantDao().findRestaurantById(id);
+        request.getSession().setAttribute("restaurant",restaurant);
         request.getRequestDispatcher("/WEB-INF/updateRestaurant.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        User user = (User) request.getSession().getAttribute("user");
         //gets the restaurant id
         String rId = request.getParameter("id");
         int id = Integer.parseInt(rId);
@@ -55,21 +61,22 @@ public class RestaurantServlet extends HttpServlet {
 
 
         //creates a new restaurant object
-        Restaurant ret = new Restaurant(id, restaurantTitle, restaurantDescription, rating, masks, gloves, socialDistance, dineIn, curbSide);
+        Restaurant ret = new Restaurant(id, user.getId(), restaurantTitle, restaurantDescription, rating, masks, gloves, socialDistance, dineIn, curbSide);
+        System.out.print(ret.getTitle());
         DaoFactory.getRestaurantDao().updateRestaurant(ret);
         response.sendRedirect("/profile");
 
-        //Should find the restaurant by id to edit it
-        DaoFactory.getRestaurantDao().findRestaurantById(id);
-        if (id == 0) {
-            response.sendRedirect("/profile");
-            return;
-        }
-
-        // update restaurant info in database
-        DaoFactory.getRestaurantDao().updateRestaurant(ret);
-        request.getSession().setAttribute("restaurant", ret);
-        response.sendRedirect("/profile");
+//        //Should find the restaurant by id to edit it
+//        DaoFactory.getRestaurantDao().findRestaurantById(id);
+//        if (id == 0) {
+//            response.sendRedirect("/profile");
+//            return;
+//        }
+//
+//        // update restaurant info in database
+//        DaoFactory.getRestaurantDao().updateRestaurant(ret);
+//        request.getSession().setAttribute("restaurant", ret);
+//        response.sendRedirect("/profile");
 
     }
 

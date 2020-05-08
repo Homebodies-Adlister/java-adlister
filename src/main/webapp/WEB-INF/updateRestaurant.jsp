@@ -17,21 +17,20 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <%--    <c:if test="${param.true_masks == true}">--%>
-
 <%--    </c:if>--%>
 <%--    <c:if test="${param.movieCheck == 'no'}">--%>
 <%--        Oops! Perhaps you can try watching them!--%>
 <%--    </c:if>--%>
 
-
 <form action="/update-restaurant" method="POST">
     <div class="form-group">
         <label for="title">Restaurant Title</label>
-        <input id="title" name="title" class="form-control" type="text" value="${restaurant.title}">
+        <input id="title" name="title" class="form-control" type="text" value="<c:out value="${restaurant.title}"/>">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <input id="description" name="description" class="form-control" type="text" value="${restaurant.description}">
+        <input id="description" name="description" class="form-control" type="text" value="<c:out value="${restaurant.description}"/>">
+        <input type="hidden" name="id" value="${restaurant.id}">
     </div>
     <div>
         <label>The restaurant uses masks</label>
@@ -64,14 +63,15 @@
     <div>
         <label>Dine in is allowed at the restaurant</label>
         <label for="is_form_1">True</label>
-        <input id="is_form_1" type="radio" name="is" value="true">
+        <input id="is_form_1" type="radio" name="di" value="true">
         <label for="is_form_2">False</label>
-        <input id="is_form_2" type="radio" name="is" value="false">
+        <input id="is_form_2" type="radio" name="di" value="false">
     </div>
     <div>
         <label for="rating">Overall rating</label>
         <input type="text" id="rating" name="rating">
     </div>
+
     <input type="submit" class="btn btn-primary btn-block" value="Submit Changes">
 
 </form>

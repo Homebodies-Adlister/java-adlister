@@ -14,7 +14,7 @@ public class Restaurant {
 
     public Restaurant(){};
 
-    public Restaurant(long id, long user_id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeIn) {
+    public Restaurant(long id, long user_id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeOut) {
         this.id = id;
         this.user_id = user_id;
         this.title = title;
@@ -27,7 +27,7 @@ public class Restaurant {
         this.takeOut = takeOut;
     }
 
-    public Restaurant(long user_id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeIn) {
+    public Restaurant(long user_id, String title, String description, int rating, boolean mask, boolean gloves, boolean socialDistancing, boolean dineIn, boolean takeOut) {
         this.user_id = user_id;
         this.title = title;
         this.description = description;

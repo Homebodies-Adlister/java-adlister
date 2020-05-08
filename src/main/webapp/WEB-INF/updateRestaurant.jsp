@@ -23,48 +23,49 @@
 <%--    </c:if>--%>
 
 <form action="/update-restaurant" method="POST">
+    <input type="hidden" name="id" value="${restaurant.id}">
     <div class="form-group">
         <label for="title">Restaurant Title</label>
-        <input id="title" name="title" class="form-control" type="text" value="${restaurant.title}">
+        <input id="title" name="title" class="form-control" type="text" value="<c:out value="${restaurant.title}"/>">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <input id="description" name="description" class="form-control" type="text" value="${restaurant.description}">
+        <input id="description" name="description" class="form-control" type="text" value="<c:out value="${restaurant.description}"/>">
     </div>
     <div>
         <label>The restaurant uses masks</label>
         <label for="masks_form_1">True</label>
-        <input id="masks_form_1" type="radio" name="masks" value="true" value="${restaurant.title}">
+        <input id="masks_form_1" type="radio" name="masks" value="true" value="<c:out value="${restaurant.title}"/>">
         <label for="masks_form_2">False</label>
-        <input id="masks_form_2" type="radio" name="masks" value="false" value="${restaurant.title}">
+        <input id="masks_form_2" type="radio" name="masks" value="false" value="<c:out value="${restaurant.title}"/>">
     </div>
     <div>
         <label>The restaurant uses masks</label>
         <label for="gloves_form_1">True</label>
-        <input id="gloves_form_1" type="radio" name="gloves" value="${restaurant.gloves}">
+        <input id="gloves_form_1" type="radio" name="gloves" value="<c:out value="${restaurant.gloves}"/>">
         <label for="masks_form_2">False</label>
-        <input id="gloves_form_2" type="radio" name="gloves" value="${restaurant.gloves}">
+        <input id="gloves_form_2" type="radio" name="gloves" value="<c:out value="${restaurant.gloves}"/>">
     </div>
     <div>
         <label>The restaurant practices social distancing</label>
         <label for="sd_form_1">True</label>
-        <input id="sd_form_1" type="radio" name="sd" value="${restaurant.socialDistancing}">
+        <input id="sd_form_1" type="radio" name="sd" value="<c:out value="${restaurant.socialDistancing}"/>">
         <label for="sd_form_2">False</label>
-        <input id="sd_form_2" type="radio" name="sd" value="${restaurant.socialDistancing}">
+        <input id="sd_form_2" type="radio" name="sd" value="<c:out value="${restaurant.socialDistancing}"/>">
     </div>
     <div>
         <label>The restaurant has delivery options</label>
         <label for="cs_form_1">True</label>
-        <input id="cs_form_1" type="radio" name="cs" value="${restaurant.takeOut}">
+        <input id="cs_form_1" type="radio" name="cs" value="<c:out value="${restaurant.takeOut}"/>">
         <label for="cs_form_2">False</label>
-        <input id="cs_form_2" type="radio" name="cs" value="${restaurant.takeOut}">
+        <input id="cs_form_2" type="radio" name="cs" value="<c:out value="${restaurant.takeOut}"/>">
     </div>
     <div>
         <label>Dine in is allowed at the restaurant</label>
         <label for="is_form_1">True</label>
-        <input id="is_form_1" type="radio" name="is" value="${restaurant.dineIn}">
+        <input id="is_form_1" type="radio" name="di" value="<c:out value="${restaurant.dineIn}"/>">
         <label for="is_form_2">False</label>
-        <input id="is_form_2" type="radio" name="is" value="${restaurant.dineIn}">
+        <input id="is_form_2" type="radio" name="di" value="<c:out value="${restaurant.dineIn}"/>">
     </div>
     <div>
         <label for="rating">Overall rating</label>

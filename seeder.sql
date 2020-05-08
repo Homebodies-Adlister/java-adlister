@@ -1,11 +1,12 @@
 USE adlister_project_db;
 
 INSERT INTO users(id, username, email, password, zip, is_admin)
-VALUES(2, 'johnnydgood', 'johnny@codeup.com', 'bbbb', 78259, true),
-      (3, 'livinlachicaloca', 'jackie@codeup.com', 'cccc', 78230, true),
-      (4, 'spicybubbles', 'james@codeup.com', 'dddd', 78254, true);
+VALUES (1, 'teddybear1', 'tedz@codeup.com', '$2a$12$gusZ/dLsO5FAClzLFqdjZ.NFMXSYSpO7l125ldfgbXrHP.Z8vJDmi', 78221, true),
+       (2, 'johnnydgood', 'johnny@codeup.com', '$2a$12$PS23wM46uQJUaYCgXcy52.DL.Gly6mGk7EiVD99HkPD7HcB0/Zfty', 78259, true),
+      (3, 'livinlachicaloca', 'jackie@codeup.com', '$2a$12$v.AuRrzZHbnsKpgAGqU3U.L/nmpBof9cWA/nRYCPnzYNHqoezOS/S', 78230, true),
+      (4, 'spicybubbles', 'james@codeup.com', '$2a$12$a.M.yIVZ2ZP0ALEp.Z3ypu7sqgGn5KsMjs0a1sA.fKxRSTv1EfSni', 78254, true);
 
--- (1, 'teddybear1', 'tedz@codeup.com', 'aaaa', 78221, true),
+
 INSERT INTO restaurant(id, user_id, title, description, rating, mask, gloves, social_distancing, dine_in, take_out)
 VALUES (1, 1, 'Panchos', 'I like the flags', '5', true, true, true, false, true),
        (2, 2, 'China Harbor', 'I found a bug in my food', '1', false, true, false, false, true),

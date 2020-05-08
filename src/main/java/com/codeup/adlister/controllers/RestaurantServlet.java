@@ -66,6 +66,11 @@ public class RestaurantServlet extends HttpServlet {
             return;
         }
 
+        // update restaurant info in database
+        DaoFactory.getRestaurantDao().updateRestaurant(ret);
+        request.getSession().setAttribute("restaurant", ret);
+        response.sendRedirect("/profile");
+
     }
 
     //determines if the user pressed true or false the masks submission

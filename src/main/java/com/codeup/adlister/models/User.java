@@ -3,7 +3,7 @@ package com.codeup.adlister.models;
 import com.codeup.adlister.util.Password;
 
 public class User {
-    private long id;
+    private int id;
     private String username;
     private String email;
     private String password;
@@ -23,7 +23,7 @@ public class User {
     }
 
     // Constructor for the backend where we have the id from the database
-    public User(long id, String username, String email, String password,int zip) {
+    public User(int id, String username, String email, String password,int zip) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -33,11 +33,11 @@ public class User {
     }
 
     // Getters and Setters for all properties
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

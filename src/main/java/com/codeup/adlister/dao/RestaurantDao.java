@@ -2,6 +2,8 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.controllers.Config;
 import com.codeup.adlister.models.Restaurant;
+import com.codeup.adlister.models.Retail;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -158,4 +160,17 @@ public class RestaurantDao implements Restaurants{
         return restaurants;
     }
 
+    @Override
+    public List<Restaurant> findRestaurantByUsername(User user) {
+        List<Restaurant> userRestaurant = new ArrayList<>();
+        String query = "SELECT * FROM restaurant WHERE user_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, user.getId());
+            ResultSet rs = stmt.executeQuery();
+            return createRestaurantFromResults (rs);
+        } catch (SQLException se){
+            throw new RuntimeException("Error getting all your retailers", se);
+        }
+    }
 }

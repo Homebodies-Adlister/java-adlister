@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jamesspicer
-  Date: 5/7/20
-  Time: 3:43 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jstl/sql" %>
@@ -16,21 +9,15 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp"/>
-<%--    <c:if test="${param.true_masks == true}">--%>
-<%--    </c:if>--%>
-<%--    <c:if test="${param.movieCheck == 'no'}">--%>
-<%--        Oops! Perhaps you can try watching them!--%>
-<%--    </c:if>--%>
 
 <form action="/update-restaurant" method="POST">
     <div class="form-group">
         <label for="title">Restaurant Title</label>
         <input id="title" name="title" class="form-control" type="text" value="<c:out value="${restaurant.title}"/>">
     </div>
-    <div class="form-group">
-        <label for="description">Description</label>
-        <input id="description" name="description" class="form-control" type="text" value="<c:out value="${restaurant.description}"/>">
-        <input type="hidden" name="id" value="${restaurant.id}">
+    <div>
+        <label for="rating">Overall rating</label>
+        <input type="text" id="rating" name="rating">
     </div>
     <div>
         <label>The restaurant uses masks</label>
@@ -53,6 +40,11 @@
         <label for="sd_form_2">False</label>
         <input id="sd_form_2" type="radio" name="sd" value="false">
     </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input id="description" name="description" class="form-control" type="text" value="<c:out value="${restaurant.description}"/>">
+        <input type="hidden" name="id" value="${restaurant.id}">
+    </div>
     <div>
         <label>The restaurant has delivery options</label>
         <label for="cs_form_1">True</label>
@@ -67,10 +59,7 @@
         <label for="is_form_2">False</label>
         <input id="is_form_2" type="radio" name="di" value="false">
     </div>
-    <div>
-        <label for="rating">Overall rating</label>
-        <input type="text" id="rating" name="rating">
-    </div>
+
 
     <input type="submit" class="btn btn-primary btn-block" value="Submit Changes">
 

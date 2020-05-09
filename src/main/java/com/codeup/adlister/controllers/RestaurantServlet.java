@@ -17,7 +17,7 @@ public class RestaurantServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id") +1);
         Restaurant restaurant = DaoFactory.getRestaurantDao().findRestaurantById(id);
         request.getSession().setAttribute("restaurant",restaurant);
         request.getRequestDispatcher("/WEB-INF/updateRestaurant.jsp").forward(request, response);

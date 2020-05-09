@@ -10,16 +10,16 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Your Profile" />
+        <jsp:param name="title" value="Your Profile"/>
     </jsp:include>
 </head>
 <body>
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 <%--loop through restaurant list to get contents of restaurant --%>
-    <c:forEach var="place" items="${Restaurants}">
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<c:forEach var="place" items="${Restaurants}">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title d-flex justify-content-center"><c:out value="${place.title}" /></h5>
+            <h5 class="card-title d-flex justify-content-center"><c:out value="${place.title}"/></h5>
             <p class="card-title">Description:<c:out value="${place.description}"/></p>
             <hr>
             <p class="card-text">Rating: <c:out value="${place.rating}"/>/5</p>
@@ -34,12 +34,27 @@
             <hr>
             <p class="card-text">Take-Out: <c:out value="${place.takeOut}"/></p>
         </div>
-<%--        <a type="button" class="btn btn-primary btn-lg btn-block" href="/update-restaurant">Edit Restaurant</a>--%>
-        <form action="/update-restaurant" method="get">
-            <input type="hidden" name="id" value="${place.id}">
-            <button type="submit">Update</button>
-        </form>
-    </c:forEach>
+
+        <span>
+            <form action="/update-restaurant" method="get">
+                <input type="hidden" name="id" value="${place.id}">
+                <button type="submit">Update</button>
+            </form>
+        </span>
+
+        <span>
+            <form action="#" method="post">
+                <input type="hidden" name="id" value="${place.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </span>
+
+        <span>
+            <form action="/profile" method="get">
+                <button type="submit">Cancel</button>
+            </form>
+        </span>
     </div>
+</c:forEach>
 </body>
 </html>

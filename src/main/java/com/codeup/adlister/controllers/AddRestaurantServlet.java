@@ -18,29 +18,38 @@ public class AddRestaurantServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+       //try creating this restaurant
+        try {
+            //got object from Restaurant.java aka Restaurant bean
+            Restaurant restaurant = new Restaurant(
+                    Integer.parseInt(request.getParameter("user_id")),
+                    request.getParameter("restaurant-title"),
+                    request.getParameter("restaurantDescription"),
+                    Integer.parseInt(request.getParameter("restaurant-rating")),
+                    Boolean.parseBoolean(request.getParameter("mask")),
+                    Boolean.parseBoolean(request.getParameter("gloves")),
+                    Boolean.parseBoolean(request.getParameter("social-distance")),
+                    Boolean.parseBoolean(request.getParameter("dine-in")),
+                    Boolean.parseBoolean(request.getParameter("take-out"))
+            );
+            DaoFactory.getRestaurantDao().addRestaurant(restaurant);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        response.sendRedirect("/profile");
 
-        int userId = Integer.parseInt(request.getParameter("user_id"));
         String title = request.getParameter("restaurant-title");
         String description = request.getParameter("restaurantDescription");
-        int rating = Integer.parseInt(request.getParameter("restaurant-rating"));
-        boolean mask = Boolean.parseBoolean(request.getParameter("mask"));
-        boolean gloves = Boolean.parseBoolean(request.getParameter("gloves"));
-        boolean socialDistance = Boolean.parseBoolean(request.getParameter("social-distance"));
-        boolean dineIn = Boolean.parseBoolean(request.getParameter("dine-in"));
-        boolean takeOut = Boolean.parseBoolean(request.getParameter("take-out"));
 
         // validate input
-        boolean inputHasErrors = title.isEmpty()
-                || description.isEmpty();
-
-        if (inputHasErrors) {
-            response.sendRedirect("/profile");
-        }
-        //pass in parameters to new restaurant
-        Restaurant restaurant = new Restaurant(userId, title, description, rating, mask, gloves, socialDistance, dineIn, takeOut);
+//        boolean inputHasErrors = title.isEmpty()
+//                || description.isEmpty();
+//
+//        if (inputHasErrors) {
+//            response.sendRedirect("/profile");
+//        }
 
         // create and save a new restaurant
-        DaoFactory.getRestaurantDao().addRestaurant(restaurant);
     }
 
 

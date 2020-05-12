@@ -18,11 +18,14 @@ public class AddRestaurantServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Get user info from the session
+        User user = (User) request.getSession().getAttribute("user");
        //try creating this restaurant
         try {
             //got object from Restaurant.java aka Restaurant bean
             Restaurant restaurant = new Restaurant(
-                    Integer.parseInt(request.getParameter("user_id")),
+                    user.getId(),
+//                    Integer.parseInt(request.getParameter("user_id")),
                     request.getParameter("restaurant-title"),
                     request.getParameter("restaurantDescription"),
                     Integer.parseInt(request.getParameter("restaurant-rating")),

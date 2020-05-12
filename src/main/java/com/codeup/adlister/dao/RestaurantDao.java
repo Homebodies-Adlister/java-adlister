@@ -47,18 +47,37 @@ public class RestaurantDao implements Restaurants{
     @Override
     public Long addRestaurant(Restaurant restaurant){
         long newlyCreatedRestaurant = 0;
-        String addRestaurantQuery = String.format("INSERT INTO restaurant (user_id, title, description, rating, mask, gloves, social_distancing, dine_in, take_out) VALUES ('%d, '%s', '%s', '%d', '%b', '%b', '%b', '%b', '%b')",
-                restaurant.getUser_id(),
-                restaurant.getTitle(),
-                restaurant.getDescription(),
-                restaurant.getRating(),
-                restaurant.isMask(),
-                restaurant.isGloves(),
-                restaurant.isSocialDistancing(),
-                restaurant.isDineIn(),
-                restaurant.isTakeOut()
-        );
+        try {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO restaurant (user_id, title, description, rating, mask, gloves, social_distancing, dine_in, take_out) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, restaurant.getUser_id());
+            stmt.setString(2, restaurant.getTitle());
+            stmt.setString(3, restaurant.getDescription());
+            stmt.setInt(4, restaurant.getRating());
+            stmt.setBoolean(5, restaurant.isMask());
+            stmt.setBoolean(6, restaurant.isGloves());
+            stmt.setBoolean(7, restaurant.isSocialDistancing());
+            stmt.setBoolean(8, restaurant.isDineIn());
+            stmt.setBoolean(9, restaurant.isTakeOut());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+            newlyCreatedRestaurant = rs.getInt(1);
+        } catch (SQLException e){
+            throw new RuntimeException("Error adding a restaurant", e);
+        }
         return newlyCreatedRestaurant;
+//        String addRestaurantQuery = String.format("INSERT INTO restaurant (user_id, title, description, rating, mask, gloves, social_distancing, dine_in, take_out) VALUES ('%d, '%s', '%s', '%d', '%b', '%b', '%b', '%b', '%b')",
+//                restaurant.getUser_id(),
+//                restaurant.getTitle(),
+//                restaurant.getDescription(),
+//                restaurant.getRating(),
+//                restaurant.isMask(),
+//                restaurant.isGloves(),
+//                restaurant.isSocialDistancing(),
+//                restaurant.isDineIn(),
+//                restaurant.isTakeOut()
+//        );
+//        return newlyCreatedRestaurant;
     }
 
     //method for deleting a restaurant from database using id
